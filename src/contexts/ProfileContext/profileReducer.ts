@@ -25,10 +25,12 @@ export function profileReducer(
       const profile = action?.payload || null;
 
       const editedProfiles = state.savedProfiles.map((p) => {
+        console.log("p ", p.id, profile.id);
         if (p.id === profile.id) {
+          console.log("entrou ", profile);
           return profile;
         }
-
+        console.log("passou ", p);
         return p;
       });
 

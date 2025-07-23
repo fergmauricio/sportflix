@@ -63,18 +63,22 @@ export function ProfileChoose() {
             </button>
           )}
           <h1 className="text-white font-bold text-4xl md:text-5xl">
-            {state.savedProfiles.length > 0 && "Escolha seu perfil"}
+            {state.savedProfiles.length > 0 &&
+              !isFormMode &&
+              "Escolha seu perfil"}
+            {state.savedProfiles.length > 0 && isFormMode && "Gerenciar Perfil"}
             {state.savedProfiles.length === 0 && "Crie um novo perfil"}
           </h1>
         </div>
         {isAddingProfile && (
           <ProfileAdd
             callback={setIsAddingProfile}
+            callback2={setIsFormMode}
             editingProfile={editingProfile}
           />
         )}
         {!isAddingProfile && state.savedProfiles.length > 0 && (
-          <div className="relative w-full flex justify-center items-center pt-8">
+          <div className="relative w-full flex justify-center items-center pt-4">
             {state.savedProfiles.map((profile, index) => {
               return (
                 <div
@@ -83,9 +87,8 @@ export function ProfileChoose() {
                   className={clsx(
                     "flex flex-col justify-start items-center transition-all duration-300",
                     !isFormMode && "hover:rounded-2xl p-4",
-                    !isFormMode && "hover:transform hover:scale-110 hover:z-20",
-                    !isFormMode &&
-                      "hover:shadow-[0_20px_30px_rgba(0,0,0,0.5)] cursor-pointer",
+                    !isFormMode && "hover:transform hover:scale-120 hover:z-20",
+                    !isFormMode && "cursor-pointer ",
                     "w-full max-w-[150px] min-h-[250px]"
                   )}
                 >
@@ -118,7 +121,7 @@ export function ProfileChoose() {
                       src={`/uploads/${profile.image}`}
                       alt={`${profile.name}`}
                       fill
-                      className="object-cover self-start mt-24"
+                      className="object-cover self-start mt-24 "
                       sizes="(max-width: 768px) 100px, (max-width: 1024px) 120px, 150px"
                       priority={index < 6}
                     />
@@ -142,7 +145,7 @@ export function ProfileChoose() {
                   state.savedProfiles.length === 0 && "w-full inset-0",
                   "justify-center items-center gap-2 cursor-pointer transition",
                   "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
-                  "text-white text-2xl font-medium py-4 px-8 rounded-lg"
+                  "text-white text-xl font-medium py-4 px-4 rounded-lg"
                 )}
               >
                 <PlusIcon /> Adicionar Novo
@@ -159,7 +162,7 @@ export function ProfileChoose() {
                     "flex",
                     "justify-center items-center gap-2 cursor-pointer transition",
                     "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
-                    "text-white text-2xl font-medium py-4 px-8 rounded-lg"
+                    "text-white text-xl font-medium py-4 px-4 rounded-lg"
                   )}
                 >
                   <EditIcon /> Gerenciar Perfis
@@ -173,7 +176,7 @@ export function ProfileChoose() {
                     "flex",
                     "justify-center items-center gap-2 cursor-pointer transition",
                     "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
-                    "text-white text-2xl font-medium py-4 px-8 rounded-lg"
+                    "text-white text-xl font-medium py-4 px-8 rounded-lg"
                   )}
                 >
                   <ArrowLeftIcon /> Voltar

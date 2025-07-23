@@ -1,6 +1,5 @@
 import { useProfileContext } from "@/contexts/ProfileContext";
 import { ProfileModel } from "@/models/profile-model";
-import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -9,68 +8,73 @@ import { CheckIcon, TrashIcon } from "lucide-react";
 
 type ProfileAddProps = {
   callback: React.Dispatch<React.SetStateAction<boolean>>;
+  callback2: React.Dispatch<React.SetStateAction<boolean>>;
   editingProfile?: ProfileModel | null;
 };
 
-export function ProfileAdd({ callback, editingProfile }: ProfileAddProps) {
+export function ProfileAdd({
+  callback,
+  callback2,
+  editingProfile,
+}: ProfileAddProps) {
   const { state, fetchProfiles, addProfile, editProfile, deleteProfile } =
     useProfileContext();
   const idProfileInput = useRef<HTMLInputElement>(null);
   const nameProfileInput = useRef<HTMLInputElement>(null);
   const imgProfileInput = useRef<HTMLInputElement>(null);
+  const [formData, setFormData] = useState({
+    id: editingProfile?.id || "",
+    name: editingProfile?.name || "",
+    image: editingProfile?.image || "",
+  });
   const [selectedProfileId, setSelectedProfileId] = useState<string | null>(
     null
   );
 
-  const router = useRouter();
-
   useEffect(() => {
     fetchProfiles();
-  }, []);
+
+    if (editingProfile) {
+      setFormData({
+        id: editingProfile.id,
+        name: editingProfile.name,
+        image: editingProfile.image,
+      });
+    }
+  }, [editingProfile]);
 
   function handleSaveSettings(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const idInput = idProfileInput.current?.value || "";
-    const nameInput = nameProfileInput.current?.value || null;
-    const imgInput = imgProfileInput.current?.value || null;
+    if (!formData.name || !formData.image) return;
 
-    if (!nameInput || !imgInput) return;
-
-    if (editingProfile.id) {
-      editProfile({
-        id: editingProfile.id,
-        name: nameInput,
-        image: imgInput,
-      });
+    if (editingProfile?.id) {
+      editProfile(formData);
     } else {
       addProfile({
-        id: `profile${idInput}_${Date.now()}`,
-        name: nameInput,
-        image: imgInput,
+        id: `profile_${Date.now()}`,
+        name: formData.name,
+        image: formData.image,
       });
     }
 
     callback(false);
+    callback2(false);
   }
 
   function handleClickProfile(id: string, image: string): void {
     setSelectedProfileId(id === selectedProfileId ? null : id);
 
-    idProfileInput.current.value = id;
-    imgProfileInput.current.value = image;
+    setFormData((prev) => ({ ...prev, image }));
+  }
+
+  function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setFormData((prev) => ({ ...prev, name: e.target.value }));
   }
 
   function handleDeleteMode() {
-    if (editingProfile.id) {
-      const nameInput = nameProfileInput.current?.value || null;
-      const imgInput = imgProfileInput.current?.value || null;
-
-      deleteProfile({
-        id: editingProfile.id,
-        name: nameInput,
-        image: imgInput,
-      });
+    if (editingProfile?.id) {
+      deleteProfile(formData);
     }
   }
 
@@ -84,25 +88,15 @@ export function ProfileAdd({ callback, editingProfile }: ProfileAddProps) {
         {state.initialProfiles.length > 0 && (
           <>
             <div className="flex w-full justify-center items-center mt-2">
+              <input type="hidden" value={formData.id} />
+              <input type="hidden" value={formData.image} />
               <DefaultInput
-                ref={idProfileInput}
-                type="hidden"
-                id="selectedId"
-                defaultValue={editingProfile?.id}
-              />
-              <DefaultInput
-                ref={imgProfileInput}
-                type="hidden"
-                id="selectedImage"
-                defaultValue={editingProfile?.image}
-              />
-              <DefaultInput
-                ref={nameProfileInput}
                 type="text"
                 id="Name"
                 label="Digite um nome"
                 className="w-[200px]"
-                defaultValue={editingProfile?.name}
+                value={formData.name}
+                onChange={handleNameChange}
               />
             </div>
             <div className="grid grid-cols-3 gap-4 w-full justify-items-center mt-6">
