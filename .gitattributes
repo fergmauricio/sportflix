@@ -1,0 +1,9 @@
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+uploads/** filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+public/uploads/*.mp4 filter=lfs diff=lfs merge=lfs -text
+public/uploads/*.mov filter=lfs diff=lfs merge=lfs -text
+public/uploads/*.jpg filter=lfs diff=lfs merge=lfs -text

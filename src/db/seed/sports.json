@@ -1,0 +1,136 @@
+{
+  "posts": [
+    {
+      "id": "sport_basquete01",
+      "title": "Basquete",
+      "slug": "basquete-o-jogo-dos-gigantes",
+      "content": "Criado em 1891, transformou-se num esporte global de alta intensidade. Com jogadores altamente habilidosos em arremessos e passes, destaca-se por enterradas espetaculares e jogadas rápidas. A NBA é a liga mais famosa, exportando ídolos globais e revolucionando a cultura esportiva moderna.",
+      "fullContent": "O basquete foi inventado por James Naismith em Springfield, Massachusetts, como um jogo indoor para manter atletas em forma durante o inverno.\n\nA NBA, fundada em 1946, se tornou a liga mais importante do mundo, com times lendários como Chicago Bulls, Los Angeles Lakers e Boston Celtics. Michael Jordan é amplamente considerado o maior jogador da história, levando o esporte à popularidade global nos anos 1990.\n\nO basquete olímpico é dominado pelos EUA, que conquistaram 16 medalhas de ouro masculinas. Recordes notáveis incluem Wilt Chamberlain (100 pontos em um jogo) e Stephen Curry (maior número de cestas de 3 pontos).\n\nO esporte também evoluiu com a inclusão da WNBA (feminino) e da tecnologia de replay instantâneo.",
+      "image": "full-shot-man-playing-basketball.jpg",
+      "video": "5346410_Coll_wavebreak_Basketball_1920x1080.mp4",
+      "published": true,
+      "createdAt": "2025-04-08T00:24:38.616Z",
+      "updatedAt": "2025-04-08T00:33:56.907Z",
+      "origem": "Estados Unidos",
+      "elenco": [
+        "Michael Jordan",
+        "LeBron James",
+        "Kobe Bryant",
+        "Stephen Curry",
+        "Magic Johnson"
+      ],
+      "datacriacao": "1891-12-21",
+      "rating": 4.7
+    },
+    {
+      "id": "sport_futebol01",
+      "title": "Futebol",
+      "slug": "futebol-o-esporte-mais-amado",
+      "content": "O esporte mais popular do mundo, o futebol cativa bilhões com sua simplicidade e emoção. Jogado entre duas equipes de 11 jogadores, o objetivo é marcar gols chutando a bola no gol adversário. Sua versatilidade permite ser praticado em campos profissionais, ruas e praias, unindo pessoas de todas as idades e culturas.",
+      "fullContent": "O futebol surgiu como esporte organizado na Inglaterra em 1863, com a fundação da Football Association.\n\nA FIFA foi criada em 1904 e hoje comanda o esporte, organizando a Copa do Mundo, o evento mais assistido do planeta. O Brasil é o maior vencedor do torneio (5 títulos), seguido por Alemanha e Itália (4 cada).\n\nAlém do futebol de campo, há variações como futsal, futebol de areia e futebol society. A Champions League é a principal competição de clubes, com Real Madrid (14 títulos) como maior campeão.\n\nPelé, único tricampeão mundial, e Messi, vencedor de 8 Bolas de Ouro, são ícones do esporte. O esporte também quebra recordes de audiência: a final da Copa de 2022 teve mais de 1,5 bilhão de espectadores.\n\nRecentemente, a inclusão da tecnologia VAR revolucionou as decisões em campo, aumentando a precisão das arbitragens.",
+      "image": "professional-football-soccer-player-kick-ball-penalty-freekick-final-match-league.jpg",
+      "video": "0_Soccer_Goal_Sunset_1920x1080.mp4",
+      "published": true,
+      "createdAt": "2025-04-08T00:24:38.616Z",
+      "updatedAt": "2025-04-08T00:33:56.907Z",
+      "origem": "Inglaterra",
+      "elenco": [
+        "Pelé",
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Diego Maradona",
+        "Johan Cruyff"
+      ],
+      "datacriacao": "1863-10-26",
+      "rating": 4.9
+    },
+    {
+      "id": "sport_natacao01",
+      "title": "Natação",
+      "slug": "natacao-o-esporte-completo",
+      "content": "Esporte completo que trabalha todos os grupos musculares com baixo impacto articular. Nas competições, atletas disputam em quatro estilos principais: crawl, costas, peito e borboleta. Além de modalidade olímpica, é atividade terapêutica e uma das habilidades físicas mais importantes para segurança em ambientes aquáticos.",
+      "fullContent": "A natação competitiva moderna surgiu no século XIX, com a primeira piscina olímpica construída para os Jogos de 1896.\n\nA FINA (Federação Internacional) foi fundada em 1908 para regular o esporte. Michael Phelps é o maior medalhista olímpico da história (28 medalhas, sendo 23 de ouro). Katie Ledecky domina as provas femininas de longa distância, quebrando múltiplos recordes mundiais.\n\nAs provas variam de 50m (mais rápida) até 1500m livre, além de revezamentos e medley. A natação também inclui maratonas aquáticas (10km) e esportes derivados como nado sincronizado e polo aquático.\n\nTecnologias como trajes de alta performance e cronometragem eletrônica revolucionaram o esporte. Além da competição, a natação é recomendada para reabilitação e condicionamento físico geral.",
+      "image": "fit-swimmer-training-by-himself.jpg",
+      "video": "1108186_1080p_4k_1920x1080.mp4",
+      "published": true,
+      "createdAt": "2025-04-08T00:24:38.616Z",
+      "updatedAt": "2025-04-08T00:33:56.907Z",
+      "origem": "Grécia Antiga",
+      "elenco": [
+        "Michael Phelps",
+        "Katie Ledecky",
+        "Mark Spitz",
+        "Ian Thorpe",
+        "Caeleb Dressel"
+      ],
+      "datacriacao": "1837-01-01",
+      "rating": 4.3
+    },
+    {
+      "id": "sport_volei01",
+      "title": "Vôlei",
+      "slug": "volei-o-esporte-dinamico",
+      "content": "Esporte de rede dinâmico onde duas equipes de 6 jogadores se enfrentam em uma quadra dividida. O objetivo é fazer a bola tocar o chão do adversário após passes e cortadas. Sua versão de praia, com 2 jogadores por time, ganhou enorme popularidade por seu caráter lúdico e competitivo.",
+      "fullContent": "O vôlei foi criado em 1895 por William G. Morgan nos EUA como alternativa menos intensa ao basquete.\n\nTornou-se olímpico em 1964 (masculino e feminino). O Brasil é potência mundial, com múltiplos títulos olímpicos e mundiais tanto no indoor quanto na praia. Giba e Serginho são ícones do vôlei masculino, enquanto Fofão e Sheilla marcaram época no feminino.\n\nO vôlei de praia estreou nas Olimpíadas em 1996, com duplas lendárias como Emanuel/Ricardo (BRA) e Karch Kiraly (USA). A FIVB organiza competições como o Campeonato Mundial e a Liga das Nações.\n\nRegras como o rally point system (1998) e o líbero (1999) modernizaram o jogo. O esporte também inclui variações como vôlei sentado (Paralímpico) e o vôlei de neve emergente.",
+      "image": "girl-posing-with-volley-ball.jpg",
+      "video": "5119379_Man_Woman_1920x1080.mp4",
+      "published": true,
+      "createdAt": "2025-04-08T00:24:38.616Z",
+      "updatedAt": "2025-04-08T00:33:56.907Z",
+      "origem": "Estados Unidos",
+      "elenco": [
+        "Giba",
+        "Karch Kiraly",
+        "Sheilla Castro",
+        "Emanuel Rego",
+        "Regla Torres"
+      ],
+      "datacriacao": "1895-02-09",
+      "rating": 4.0
+    },
+    {
+      "id": "sport_boxe01",
+      "title": "Boxe",
+      "slug": "boxe-a-arte-nobre",
+      "content": "Arte marcial ocidental que envolve estratégia, força e resistência em combates de socos. Dividido em rounds, exige disciplina física e mental dos atletas. Além de esporte olímpico, o boxe profissional gera lutas lendárias que entram para a história do esporte mundial.",
+      "fullContent": "O boxe moderno surgiu no século XVIII na Inglaterra com as regras de Queensberry (1867), estabelecendo rounds de 3 minutos e uso de luvas.\n\nMuhammad Ali é considerado o maior pugilista da história, famoso por suas habilidades e ativismo social. O boxe olímpico usa sistema de pontuação eletrônico e capacetes (removidos em 2016), enquanto o profissional tem 17 categorias de peso.\n\nFloyd Mayweather se aposentou invicto (50-0), e Mike Tyson foi o mais jovem campeão dos pesos-pesados (20 anos). A luta Ali vs. Frazier (1971), chamada 'Luta do Século', é um marco histórico.\n\nOrganizações como WBC, WBA, IBF e WBO regulam títulos mundiais. Recentemente, o boxe feminino ganhou destaque com atletas como Claressa Shields e Katie Taylor.\n\nO esporte enfrenta desafios com lesões cerebrais, levando a protocolos de segurança mais rígidos.",
+      "image": "boxer-boxe-competition-beats-his-opponent-with-punch.jpg",
+      "video": "6035959_Gym_Fitness_1920x1080.mp4",
+      "published": true,
+      "createdAt": "2025-04-08T00:24:38.616Z",
+      "updatedAt": "2025-04-08T00:33:56.907Z",
+      "origem": "Inglaterra",
+      "elenco": [
+        "Muhammad Ali",
+        "Mike Tyson",
+        "Floyd Mayweather",
+        "Sugar Ray Robinson",
+        "Manny Pacquiao"
+      ],
+      "datacriacao": "1867-08-27",
+      "rating": 4.5
+    },
+    {
+      "id": "sport_atletismo01",
+      "title": "Atletismo",
+      "slug": "atletismo-a-mais-antiga-competicao",
+      "content": "Considerado a forma mais antiga de competição organizada, engloba corridas, saltos e arremessos. Eventos como 100m rasos e maratona testam os limites da velocidade e resistência humanas. Base dos Jogos Olímpicos, continua sendo o medidor fundamental do desempenho atlético.",
+      "fullContent": "O atletismo remonta aos Jogos Olímpicos da Antiguidade (776 a.C.) e é a base dos Jogos modernos desde 1896.\n\nUsain Bolt detém os recordes dos 100m (9.58s) e 200m (19.19s), sendo o velocista mais famoso da história. A maratona (42.195km) homenageia a lenda grega de Fidípides.\n\nO salto com vara masculino superou a barreira dos 6m (Armand Duplantis), enquanto o feminino viu Yelena Isinbayeva dominar por anos. O Quênia e Etiópia lideram nas provas de fundo, e os EUA nos eventos de velocidade.\n\nO decatlo (masculino) e heptatlo (feminino) coroam os atletas mais completos. Tecnologias como fotofinish e anemômetros garantem precisão nas medições.\n\nO atletismo paralímpico, com categorias para diferentes deficiências, é igualmente competitivo e inspirador.",
+      "image": "close-up-young-woman-tying-sports-shoe-red-race-track.jpg",
+      "video": "1115247_Woman_Indoor_1920x1080.mp4",
+      "published": true,
+      "createdAt": "2025-04-08T00:24:38.616Z",
+      "updatedAt": "2025-04-08T00:33:56.907Z",
+      "origem": "Grécia Antiga",
+      "elenco": [
+        "Usain Bolt",
+        "Carl Lewis",
+        "Florence Griffith-Joyner",
+        "Eliud Kipchoge",
+        "Allyson Felix"
+      ],
+      "datacriacao": "776 a.C.",
+      "rating": 4.2
+    }
+  ]
+}
