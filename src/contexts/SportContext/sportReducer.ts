@@ -26,6 +26,13 @@ export function sportReducer(
         sports,
       };
     }
+    case SportActionsTypes.INITIAL_SPORTS_RATING: {
+      const sports = action.payload;
+      return {
+        ...state,
+        sportsByRating: sports,
+      };
+    }
   }
 
   return state;

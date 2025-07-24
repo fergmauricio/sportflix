@@ -22,6 +22,21 @@ export class JsonSportRepository implements SportRepository {
     return sports;
   }
 
+  async findAllPublicByRating(): Promise<SportModel[]> {
+    const sportsWithRating = sportsData.posts.filter(
+      (post) => post.rating !== undefined && post.rating !== null
+    );
+
+    const sortedSports = sportsWithRating.sort((a, b) => {
+      const ratingA = Number(a.rating) || 0;
+      const ratingB = Number(b.rating) || 0;
+
+      return ratingB - ratingA; // Ordem decrescente
+    });
+
+    return sortedSports;
+  }
+
   async findById(id: string): Promise<SportModel> {
     const sports = await this.findAllPublic();
     const sport = sports.find((sport) => sport.id === id);

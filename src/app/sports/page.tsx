@@ -19,7 +19,7 @@ export default function MyListPage() {
     <ProfileContextProvider>
       <ListProfileSportContextProvider>
         <SportContextProvider>
-          <SportsList type="mylist" />
+          <SportsList type={"sportslist"} />
         </SportContextProvider>
       </ListProfileSportContextProvider>
     </ProfileContextProvider>

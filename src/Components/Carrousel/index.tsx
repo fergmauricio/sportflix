@@ -13,11 +13,11 @@ import { useProfileContext } from "@/contexts/ProfileContext";
 
 type CarrouselProps = {
   title: string;
-  type: "standard" | "customList";
+  type: "standard" | "customList" | "rating";
 };
 
 export function Carrousel({ title, type }: CarrouselProps) {
-  const { state, dispatch } = useSportContext();
+  const { state, dispatch, fetchSportsByRating } = useSportContext();
   const { state: profileState } = useProfileContext();
   const { state: myListState } = useProfileSportContext();
 
@@ -32,6 +32,13 @@ export function Carrousel({ title, type }: CarrouselProps) {
       }
     }
 
+    if (type === "rating") {
+      console.log("rat ", state.sportsByRating);
+      if (state.sportsByRating) {
+        setSourceData(state.sportsByRating);
+      }
+    }
+
     if (!profileState.activeProfile) return;
 
     if (type === "customList") {
@@ -39,7 +46,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
         setSourceData(myListState[profileState.activeProfile?.id]);
       }
     }
-  }, [state.sports, myListState, profileState.activeProfile]);
+  }, [state, myListState, profileState.activeProfile]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -72,7 +79,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
   }
 
   return (
-    <div className="relative w-screen h-[450px] md:h-[350px] mb-6">
+    <div className="relative w-screen h-[450px] md:h-[350px] overflow-visible">
       <h2 className="text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12">
         {title}
       </h2>
@@ -88,18 +95,19 @@ export function Carrousel({ title, type }: CarrouselProps) {
 
         <div className="flex">
           <div
-            className={clsx("flex transition-transform duration-300 gap-4 ")}
+            className={clsx("flex transition-transform duration-300 gap-4 z-9")}
             style={{
               transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
             }}
           >
             {sourceData.map((item, index) => (
-              <div key={index} className="flex flex-col">
+              <div key={`${index}_${item.id}`} className="flex flex-col">
                 <div
                   onClick={() => handleClickCard(item)}
                   className={clsx(
-                    "flex-shrink-0 relative rounded overflow-hidden transition",
-                    "w-[250px] sm:w-[400px]",
+                    "flex-shrink-0 relative rounded overflow-hidden transition-all duration-300",
+                    "shadow-[0_10px_20px_rgba(0,0,0,0.2)]",
+                    "w-[250px] sm:w-[400px] z-10 ",
                     "hover:transform hover:scale-[1.3] hover:z-30 hover:shadow-[0_5px_10px_rgba(0,0,0,0.5)] hover:delay-300 cursor-pointer"
                   )}
                   style={{
@@ -116,6 +124,14 @@ export function Carrousel({ title, type }: CarrouselProps) {
                     )}
                   >
                     <InfoIcon size={36} />
+                    <div className="absolute bottom-5 left-5 flex gap-2 pt-2 w-[220px] sm:w-[380px]">
+                      <h3 className="text-slate-100 font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis">
+                        {item.title}:{" "}
+                        <span className="text-slate-200 font-normal">
+                          {item.content}
+                        </span>
+                      </h3>
+                    </div>
                   </div>
                   <Image
                     src={`/uploads/${item.image}`}
@@ -126,14 +142,6 @@ export function Carrousel({ title, type }: CarrouselProps) {
                     priority={index < visibleCards}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-                <div className="flex gap-2 pt-2 w-[250px] sm:w-[400px]">
-                  <h3 className="text-slate-300 font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis">
-                    {item.title}:{" "}
-                    <span className="text-slate-400 font-normal">
-                      {item.content}
-                    </span>
-                  </h3>
                 </div>
               </div>
             ))}

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { initialSportState } from "./initialSportState";
 
 import { sportReducer } from "./sportReducer";
@@ -15,6 +15,7 @@ type SportContextProps = {
   state: SportStateModel;
   dispatch: React.Dispatch<SportActionModel>;
   fetchSports: () => Promise<void>;
+  fetchSportsByRating: () => Promise<void>;
   activeSport: (sport: SportModel) => void;
   clearActiveSport: () => void;
 };
@@ -30,12 +31,31 @@ type SportContextProviderProps = {
 export function SportContextProvider({ children }: SportContextProviderProps) {
   const [state, dispatch] = useReducer(sportReducer, initialSportState);
 
+  useEffect(() => {
+    fetchSports();
+    fetchSportsByRating();
+  }, []);
+
   const fetchSports = async () => {
     try {
       const sportRepository: SportRepository = new JsonSportRepository();
       const sports = await sportRepository.findAllPublic();
 
       dispatch({ type: SportActionsTypes.INITIAL_SPORTS, payload: sports });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchSportsByRating = async () => {
+    try {
+      const sportRepository: SportRepository = new JsonSportRepository();
+      const sports = await sportRepository.findAllPublicByRating();
+
+      dispatch({
+        type: SportActionsTypes.INITIAL_SPORTS_RATING,
+        payload: sports,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +71,14 @@ export function SportContextProvider({ children }: SportContextProviderProps) {
 
   return (
     <SportContext.Provider
-      value={{ state, dispatch, fetchSports, activeSport, clearActiveSport }}
+      value={{
+        state,
+        dispatch,
+        fetchSports,
+        fetchSportsByRating,
+        activeSport,
+        clearActiveSport,
+      }}
     >
       {children}
     </SportContext.Provider>
