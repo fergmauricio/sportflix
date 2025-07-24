@@ -36,7 +36,7 @@ export function Portal() {
               <MainBanner />
             </section>
 
-            <Container className="mt-20 sm:mt-10 lg:mt-10">
+            <Container className="mt-20 sm:mt-5 lg:mt-5">
               <Carrousel
                 title="Sugestões que você vai adorar"
                 type="standard"

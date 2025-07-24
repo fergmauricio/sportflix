@@ -10,6 +10,10 @@ import { useState, useEffect } from "react";
 import { SpinLoader } from "../SpinLoader";
 import { useProfileSportContext } from "@/contexts/ListProfileSportContext";
 import { useProfileContext } from "@/contexts/ProfileContext";
+import { FaRegStar, FaStar, FaStarHalfAlt, FaThList } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
+import { VscTasklist } from "react-icons/vsc";
+import { BsEmojiSunglasses, BsList } from "react-icons/bs";
 
 type CarrouselProps = {
   title: string;
@@ -74,13 +78,46 @@ export function Carrousel({ title, type }: CarrouselProps) {
     dispatch({ type: SportActionsTypes.ACTIVE_SPORT, payload: item });
   }
 
+  function renderStars(rating: number) {
+    if (!rating) return;
+
+    const ratingStr = rating.toString();
+    const stars = [];
+    const isFloatingNumber = ratingStr.indexOf(".") !== -1;
+
+    if (isFloatingNumber) {
+      const integerNumber = ratingStr.split(".")[0];
+      for (let i = 1; i < integerNumber; i++) {
+        stars.push(<FaStar className="text-amber-400" />);
+      }
+      stars.push(<FaStarHalfAlt className="text-amber-400" />);
+      stars.push(<FaRegStar className="text-amber-400" />);
+    } else {
+      for (let i = 1; i <= rating; i++) {
+        stars.push(<FaStar className="text-amber-400" />);
+      }
+    }
+
+    return stars;
+  }
+
   if (!sourceData) {
     return <SpinLoader />;
   }
 
   return (
     <div className="relative w-screen h-[450px] md:h-[350px] overflow-visible">
-      <h2 className="text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12">
+      <h2 className="text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12 flex gap-2 items-center">
+        {type === "rating" && (
+          <FaStar className="text-slate-300 mt-1 mr-1" size={20} />
+        )}
+        {type === "customList" && (
+          <BsList className="text-slate-300 mt-1 mr-1" size={20} />
+        )}
+        {type === "standard" && (
+          <BsEmojiSunglasses className="text-slate-300 mt-1 mr-1" size={20} />
+        )}
+
         {title}
       </h2>
 
@@ -126,7 +163,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
                     <InfoIcon size={36} />
                     <div className="absolute bottom-5 left-5 flex gap-2 pt-2 w-[220px] sm:w-[380px]">
                       <h3 className="text-slate-100 font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis">
-                        {item.title}:{" "}
+                        {item.title}:
                         <span className="text-slate-200 font-normal">
                           {item.content}
                         </span>
@@ -143,6 +180,12 @@ export function Carrousel({ title, type }: CarrouselProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
+                {type === "rating" && (
+                  <div className="flex mt-4 gap-1 justify-start items-center">
+                    <span>{item.rating}</span>
+                    {renderStars(item.rating)}
+                  </div>
+                )}
               </div>
             ))}
           </div>
