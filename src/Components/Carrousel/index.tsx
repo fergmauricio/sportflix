@@ -98,9 +98,9 @@ export function Carrousel({ title, type }: CarrouselProps) {
                 <div
                   onClick={() => handleClickCard(item)}
                   className={clsx(
-                    "flex-shrink-0 relative rounded overflow-hidden transition group",
+                    "flex-shrink-0 relative rounded overflow-hidden transition",
                     "w-[250px] sm:w-[400px]",
-                    "hover:transform hover:scale-[1.3] hover:z-20 hover:shadow-[0_5px_10px_rgba(0,0,0,0.5)] hover:delay-300 cursor-pointer"
+                    "hover:transform hover:scale-[1.3] hover:z-30 hover:shadow-[0_5px_10px_rgba(0,0,0,0.5)] hover:delay-300 cursor-pointer"
                   )}
                   style={{
                     height: "240px",
@@ -127,12 +127,12 @@ export function Carrousel({ title, type }: CarrouselProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
-                <div className="flex flex-col gap-2 pt-2">
-                  <h3 className="text-slate-300 font-bold text-xl">
-                    {item.title}
-                  </h3>
-                  <h3 className="text-slate-300 font-normal">
-                    {item.content.substring(0, 80)}...
+                <div className="flex gap-2 pt-2 w-[250px] sm:w-[400px]">
+                  <h3 className="text-slate-300 font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis">
+                    {item.title}:{" "}
+                    <span className="text-slate-400 font-normal">
+                      {item.content}
+                    </span>
                   </h3>
                 </div>
               </div>
