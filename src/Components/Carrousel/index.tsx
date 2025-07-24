@@ -4,7 +4,7 @@ import { useSportContext } from "@/contexts/SportContext";
 import { SportActionsTypes } from "@/contexts/SportContext/sportActions";
 import { SportModel } from "@/models/sport-model";
 import clsx from "clsx";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, InfoIcon } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { SpinLoader } from "../SpinLoader";
@@ -72,15 +72,15 @@ export function Carrousel({ title, type }: CarrouselProps) {
   }
 
   return (
-    <div className="relative w-screen h-[450px] md:h-[350px] mb-12">
-      <h2 className="text-3xl font-bold text-white mb-6 pl-4 md:pl-12">
+    <div className="relative w-screen h-[450px] md:h-[350px] mb-6">
+      <h2 className="text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12">
         {title}
       </h2>
 
       <div className="relative group px-4 md:px-12">
         <button
           onClick={prevSlide}
-          className="absolute cursor-pointer top-26 left-4 z-30 w-10 h-10 md:w-18 md:h-18 flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-black/90 transition-all"
+          className="absolute cursor-pointer top-22 left-4 z-30 w-10 h-10 md:w-18 md:h-18 flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-black/90 transition-all"
           aria-label="Anterior"
         >
           <ArrowLeftIcon className="w-6 h-6" />
@@ -94,30 +94,46 @@ export function Carrousel({ title, type }: CarrouselProps) {
             }}
           >
             {sourceData.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => handleClickCard(item)}
-                className={clsx(
-                  "flex-shrink-0 relative rounded-xl overflow-hidden transition",
-                  "w-[250px] sm:w-[400px]",
-                  "hover:transform hover:scale-[1.2] hover:z-20 shadow-[0_20px_30px_rgba(0,0,0,0.5)] cursor-pointer"
-                )}
-                style={{
-                  height: "280px",
-                  marginRight: "4px",
-                }}
-              >
-                <Image
-                  src={`/uploads/${item.image}`}
-                  alt={item.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="w-full h-full"
-                  priority={index < visibleCards}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-white font-bold text-lg">{item.title}</h3>
+              <div key={index} className="flex flex-col">
+                <div
+                  onClick={() => handleClickCard(item)}
+                  className={clsx(
+                    "flex-shrink-0 relative rounded overflow-hidden transition group",
+                    "w-[250px] sm:w-[400px]",
+                    "hover:transform hover:scale-[1.3] hover:z-20 hover:shadow-[0_5px_10px_rgba(0,0,0,0.5)] hover:delay-300 cursor-pointer"
+                  )}
+                  style={{
+                    height: "240px",
+                    marginRight: "4px",
+                  }}
+                >
+                  <div
+                    className={clsx(
+                      "absolute z-50 inset-0 w-full h-full",
+                      "bg-black/50 ",
+                      "flex justify-center items-center",
+                      "opacity-0 hover:opacity-100 hover:delay-300 transition-opacity"
+                    )}
+                  >
+                    <InfoIcon size={36} />
+                  </div>
+                  <Image
+                    src={`/uploads/${item.image}`}
+                    alt={item.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="w-full h-full"
+                    priority={index < visibleCards}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+                <div className="flex flex-col gap-2 pt-2">
+                  <h3 className="text-slate-300 font-bold text-xl">
+                    {item.title}
+                  </h3>
+                  <h3 className="text-slate-300 font-normal">
+                    {item.content.substring(0, 80)}...
+                  </h3>
                 </div>
               </div>
             ))}
@@ -126,7 +142,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
 
         <button
           onClick={nextSlide}
-          className="absolute cursor-pointer top-26 right-10 z-30 w-10 h-10 md:w-18 md:h-18 flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-black/90 transition-all"
+          className="absolute cursor-pointer top-22 right-10 z-30 w-10 h-10 md:w-18 md:h-18 flex items-center justify-center rounded-full bg-black/70 text-white hover:bg-black/90 transition-all"
           aria-label="Próximo"
         >
           <ArrowRightIcon className="w-6 h-6" />

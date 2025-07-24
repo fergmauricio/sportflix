@@ -6,6 +6,7 @@ import { CircleChevronDown, MenuIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function Menu() {
   const { state, clearActiveProfile } = useProfileContext();
@@ -35,7 +36,7 @@ export function Menu() {
   const menuToggle = clsx(
     "sm:opacity-0 sm:pointer-events-none visible",
     "flex",
-    "ml-auto mr-4",
+    "ml-auto",
     "b-none",
     "text-white",
     "text-[1.5rem]",
@@ -48,12 +49,11 @@ export function Menu() {
   const profileToggle = clsx(
     "flex justify-center items-center gap-2 cursor-pointer p-2 transition",
     "hover:bg-slate-950 hover:rounded-lg",
-    "ml-auto mr-4",
+    "ml-auto mr-2 sm:mr-0",
     "b-none",
     "text-white",
     "text-[1.5rem]",
     "relative",
-    "r-auto",
     "!order-2",
     "mx-auto"
   );
@@ -73,24 +73,24 @@ export function Menu() {
   }
 
   const links = [
-    { href: "#", label: "Início" },
-    { href: "#", label: "Esportes" },
-    { href: "#", label: "Minha Lista" },
+    { href: "/portal", label: "Início" },
+    { href: "/sports", label: "Esportes" },
+    { href: "/myList", label: "Minha Lista" },
   ];
 
   return (
-    <header className="fixed top-0 w-full flex bg-transparent z-10 h-22 justify-between items-center">
+    <header className="fixed top-0 w-full flex bg-transparent z-10 h-22 items-center">
       <div
         className="absolute inset-0 
           before:content-[''] before:absolute before:inset-0
           before:bg-gradient-to-b before:from-black/90 before:to-transparent
           before:-z-10"
       />
-      <div className="w-full flex items-center px-6">
-        <div className="text-2xl text-red-500">SPORTSFLIX</div>
-        <button className={menuToggle} onClick={handleToggleMenu}>
-          <MenuIcon />
-        </button>
+      <div className="w-full flex items-center">
+        <div className="text-2xl font-medium text-red-500 pl-8 sm:ml-4">
+          SPORTSFLIX
+        </div>
+
         <div className={profileToggle}>
           {state.activeProfile && (
             <>
@@ -98,15 +98,19 @@ export function Menu() {
                 id={state.activeProfile.id}
                 src={`/uploads/${state.activeProfile.image}`}
                 alt={state.activeProfile.name || ""}
-                width={40}
-                height={40}
+                width={30}
+                height={30}
                 priority={true}
+                className="sm:w-[40px] sm:h-[40px]"
                 onClick={handleProfiles}
               />
-              <CircleChevronDown />
             </>
           )}
+          <button className={menuToggle} onClick={handleToggleMenu}>
+            <MenuIcon size={30} />
+          </button>
         </div>
+
         <nav
           className={clsx(
             "sm:flex sm:flex-grow-10 z-20 px-4",
@@ -133,7 +137,7 @@ export function Menu() {
             {links.map((link) => {
               return (
                 <li key={link.label} className={liClassName()}>
-                  <a href="#">{link.label}</a>
+                  <Link href={link.href}>{link.label}</Link>
                 </li>
               );
             })}

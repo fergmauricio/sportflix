@@ -2,6 +2,7 @@
 
 import { Carrousel } from "../Carrousel";
 import { Container } from "../Container";
+import { Footer } from "../Footer";
 import { MainBanner } from "../MainBanner";
 import { Menu } from "../Menu";
 import { SportInfo } from "../SportInfo";
@@ -35,15 +36,18 @@ export function Portal() {
               <MainBanner />
             </section>
 
-            <Container>
-              <Carrousel title="Populares" type="standard" />
+            <Container className="mt-20 sm:mt-20 lg:mt-20">
+              <Carrousel
+                title="Sugestões que você vai adorar"
+                type="standard"
+              />
             </Container>
 
-            <Container className="mt-12">
+            <Container className="mt-12 sm:mt-30">
               <Carrousel title="Minha Lista" type="customList" />
             </Container>
             <Container>
-              <h1 className="m-20">Footer</h1>
+              <Footer />
             </Container>
           </main>
         </Container>
