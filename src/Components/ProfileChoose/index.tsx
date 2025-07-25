@@ -42,6 +42,17 @@ export function ProfileChoose() {
   return (
     <>
       <div
+        class="animate-fade-in opacity-0"
+        className={clsx(
+          "text-2xl font-medium text-green-400",
+          "fixed top-1/2 left-1/2 top-10 transform ",
+          "-translate-x-1/2 ",
+          "-translate-y-1/2"
+        )}
+      >
+        SPORTSFLIX
+      </div>
+      <div
         className={clsx(
           "w-[70vw] h-[30vw] sm:w-[60vw] fixed top-1/2",
           "left-1/2",
@@ -142,7 +153,7 @@ export function ProfileChoose() {
                 }}
                 className={clsx(
                   "flex",
-                  state.savedProfiles.length === 0 && "w-full inset-0",
+                  state.savedProfiles.length === 0 && "w-[450px] inset-0",
                   "justify-center items-center gap-2 cursor-pointer transition",
                   "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
                   "text-white text-xl font-medium py-4 px-4 rounded-lg"

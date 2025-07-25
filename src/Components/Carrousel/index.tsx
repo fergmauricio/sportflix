@@ -106,7 +106,12 @@ export function Carrousel({ title, type }: CarrouselProps) {
   }
 
   return (
-    <div className="relative w-screen h-[350px] md:h-[350px] overflow-visible mt-4">
+    <div
+      className={clsx(
+        "relative w-screen h-[350px] md:h-[350px] overflow-visible mt-4",
+        type === "rating" && "mb-8"
+      )}
+    >
       <h2 className="text-2xl sm:text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12 flex gap-2 items-center">
         {type === "rating" && (
           <FaStar className="text-green-400 mt-1 mr-1" size={20} />

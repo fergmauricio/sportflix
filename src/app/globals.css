@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer utilities {
+  .transition-opacity {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .mask-gradient-bottom {
     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);

@@ -7,6 +7,7 @@ import { MainBanner } from "../MainBanner";
 import { Menu } from "../Menu";
 import { SportInfo } from "../SportInfo";
 import { useEffect, useState } from "react";
+import AnimateOnScroll from "../AnimateOnScroll";
 
 export function Portal() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,18 +37,26 @@ export function Portal() {
               <MainBanner />
             </section>
 
-            <Container>
-              <Carrousel
-                title="Sugestões que você vai adorar"
-                type="standard"
-              />
-            </Container>
-            <Container>
-              <Carrousel title="Minha Lista" type="customList" />
-            </Container>
-            <Container>
-              <Carrousel title="Mais bem avaliados" type="rating" />
-            </Container>
+            <AnimateOnScroll delay={2000} duration={700}>
+              <Container>
+                <Carrousel
+                  title="Sugestões que você vai adorar"
+                  type="standard"
+                />
+              </Container>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={2400} duration={700}>
+              <Container>
+                <Carrousel title="Mais bem avaliados" type="rating" />
+              </Container>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={2900} duration={700}>
+              <Container>
+                <Carrousel title="Minha Lista" type="customList" />
+              </Container>
+            </AnimateOnScroll>
 
             <Container>
               <Footer />
