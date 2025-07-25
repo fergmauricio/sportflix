@@ -74,6 +74,7 @@ export function Menu() {
 
   const links = [
     { href: "/portal", label: "Início" },
+    { href: "/about", label: "Sobre" },
     { href: "/sports", label: "Esportes" },
     { href: "/myList", label: "Minha Lista" },
   ];
@@ -87,7 +88,7 @@ export function Menu() {
           before:-z-10"
       />
       <div className="w-full flex items-center">
-        <div className="text-2xl font-medium text-red-500 pl-8 sm:ml-4">
+        <div className="text-2xl font-medium text-green-400 pl-8 sm:ml-4">
           SPORTSFLIX
         </div>
 

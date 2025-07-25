@@ -61,7 +61,8 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
         </Container>
         <Container className="flex justify-center items-center pt-30">
           <h1 className="font-bold text-4xl text-slate-200">
-            Catálogo de Esportes
+            {type === "mylist" && "Minha Lista Customizada"}
+            {type === "sportslist" && "Catálogo de Esportes"}
           </h1>
         </Container>
         <Container>

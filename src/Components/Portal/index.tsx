@@ -36,19 +36,19 @@ export function Portal() {
               <MainBanner />
             </section>
 
-            <Container className="mt-20 sm:mt-5 lg:mt-5">
+            <Container>
               <Carrousel
                 title="Sugestões que você vai adorar"
                 type="standard"
               />
             </Container>
-
-            <Container className="mt-12 sm:mt-20">
+            <Container>
               <Carrousel title="Minha Lista" type="customList" />
             </Container>
-            <Container className="mt-12 sm:mt-20">
+            <Container>
               <Carrousel title="Mais bem avaliados" type="rating" />
             </Container>
+
             <Container>
               <Footer />
             </Container>

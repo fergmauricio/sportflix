@@ -1,4 +1,4 @@
-import SportsList from "@/Components/SportsList";
+import About from "@/Components/About";
 import { ListProfileSportContextProvider } from "@/contexts/ListProfileSportContext";
 import { ProfileContextProvider } from "@/contexts/ProfileContext";
 import { SportContextProvider } from "@/contexts/SportContext";
@@ -9,19 +9,21 @@ export const dynamic = "force-static";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "SPORTFLIX | Minha Lista Customizada",
+    title: "SPORTFLIX | About",
     description: "",
   };
 }
 
-export default function MyListPage() {
+export default function AboutPage() {
   return (
-    <ProfileContextProvider>
-      <ListProfileSportContextProvider>
-        <SportContextProvider>
-          <SportsList type="mylist" />
-        </SportContextProvider>
-      </ListProfileSportContextProvider>
-    </ProfileContextProvider>
+    <>
+      <ProfileContextProvider>
+        <ListProfileSportContextProvider>
+          <SportContextProvider>
+            <About />
+          </SportContextProvider>
+        </ListProfileSportContextProvider>
+      </ProfileContextProvider>
+    </>
   );
 }

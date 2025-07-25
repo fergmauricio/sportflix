@@ -88,25 +88,25 @@ export function Carrousel({ title, type }: CarrouselProps) {
     if (isFloatingNumber) {
       const integerNumber = ratingStr.split(".")[0];
       for (let i = 1; i < integerNumber; i++) {
-        stars.push(<FaStar className="text-amber-400" />);
+        stars.push(<FaStar className="text-green-400" />);
       }
-      stars.push(<FaStarHalfAlt className="text-amber-400" />);
-      stars.push(<FaRegStar className="text-amber-400" />);
+      stars.push(<FaStarHalfAlt className="text-green-400" />);
+      stars.push(<FaRegStar className="text-green-400" />);
     } else {
       for (let i = 1; i <= rating; i++) {
-        stars.push(<FaStar className="text-amber-400" />);
+        stars.push(<FaStar className="text-green-400" />);
       }
     }
 
     return stars;
   }
 
-  if (!sourceData) {
-    return <SpinLoader />;
+  if (sourceData.length === 0) {
+    return <></>;
   }
 
   return (
-    <div className="relative w-screen h-[450px] md:h-[350px] overflow-visible">
+    <div className="relative w-screen h-[450px] md:h-[350px] overflow-visible mt-4">
       <h2 className="text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12 flex gap-2 items-center">
         {type === "rating" && (
           <FaStar className="text-slate-300 mt-1 mr-1" size={20} />

@@ -12,7 +12,7 @@ export function Footer() {
           before:-z-10"
       />
       <div className="relative w-full h-20 flex flex-col pt-60 justify-center items-center gap-12 text-slate-400">
-        <div className="flex gap-6 text-slate-200">
+        <div className="flex gap-6 text-green-400">
           <button
             className="cursor-pointer hover:scale-130 transition"
             onClick={() => handleSocial("github")}
