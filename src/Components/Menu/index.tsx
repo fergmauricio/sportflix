@@ -12,6 +12,7 @@ export function Menu() {
   const { state, clearActiveProfile } = useProfileContext();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const router = useRouter();
 
@@ -20,11 +21,19 @@ export function Menu() {
       setIsMobile(window.innerWidth < 640);
     };
 
+    const checkScrolling = () => {
+      setIsScrolling(window.scrollY > 0);
+    };
+
     checkScreenSize();
 
     window.addEventListener("resize", checkScreenSize);
+    window.addEventListener("scroll", checkScrolling);
 
-    return () => window.removeEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+      window.removeEventListener("scroll", checkScrolling);
+    };
   }, []);
 
   useEffect(() => {
@@ -82,10 +91,23 @@ export function Menu() {
   return (
     <header className="fixed top-0 w-full flex bg-transparent z-10 h-22 items-center">
       <div
-        className="absolute inset-0 
-          before:content-[''] before:absolute before:inset-0
-          before:bg-gradient-to-b before:from-black/95 before:to-transparent
-          before:-z-10"
+        className={clsx(
+          "absolute inset-0 transition-opacity delay-150 duration-150 ease-in-out ",
+          "before:content-[''] before:absolute before:inset-0",
+          "before:bg-gradient-to-b before:from-black/95 before:to-transparent",
+          !isScrolling ? "opacity-100" : "opacity-0",
+          "before:-z-10"
+        )}
+      />
+
+      <div
+        className={clsx(
+          "absolute inset-0 transition-opacity delay-150 duration-150 ease-in-out ",
+          "before:content-[''] before:absolute before:inset-0",
+          "before:bg-gradient-to-b before:bg-black",
+          isScrolling ? "opacity-100" : "opacity-0",
+          "before:-z-10"
+        )}
       />
       <div className="w-full flex items-center">
         <div className="text-2xl font-medium text-green-400 pl-8 sm:ml-4">

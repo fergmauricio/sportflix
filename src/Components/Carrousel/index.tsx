@@ -132,7 +132,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
 
         <div className="flex">
           <div
-            className={clsx("flex transition-transform duration-300 gap-4 z-9")}
+            className={clsx("flex transition-transform duration-300 gap-2 z-9")}
             style={{
               transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
             }}
@@ -149,7 +149,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
                   )}
                   style={{
                     height: "240px",
-                    marginRight: "4px",
+                    marginRight: "2px",
                   }}
                 >
                   <div
@@ -161,9 +161,9 @@ export function Carrousel({ title, type }: CarrouselProps) {
                     )}
                   >
                     <InfoIcon size={36} />
-                    <div className="absolute bottom-5 left-5 flex gap-2 pt-2 w-[220px] sm:w-[380px]">
+                    <div className="absolute bottom-3 left-4 flex gap-2 pt-2 w-[180px] sm:w-[380px]">
                       <h3 className="text-slate-100 font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis">
-                        {item.title}:
+                        {item.title}:{" "}
                         <span className="text-slate-200 font-normal">
                           {item.content}
                         </span>

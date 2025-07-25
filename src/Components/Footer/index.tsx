@@ -1,4 +1,5 @@
 import { Github, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 function handleSocial(type: string) {}
 
@@ -13,31 +14,32 @@ export function Footer() {
       />
       <div className="relative w-full h-20 flex flex-col pt-60 justify-center items-center gap-12 text-slate-400">
         <div className="flex gap-6 text-green-400">
-          <button
+          <a
             className="cursor-pointer hover:scale-130 transition"
-            onClick={() => handleSocial("github")}
+            target="_blank"
+            href={"https://github.com/fergMauricio"}
           >
             <Github />
-          </button>
-          <button
+          </a>
+          <a
             className="cursor-pointer hover:scale-130 transition"
-            onClick={() => handleSocial("instagram")}
+            target="_blank"
+            href={"https://instagram.com/mauricioferg81"}
           >
             <Instagram />
-          </button>
-          <button
+          </a>
+
+          <a
             className="cursor-pointer hover:scale-130 transition"
-            onClick={() => handleSocial("linkedin")}
+            target="_blank"
+            href={"https://www.linkedin.com/in/maur%C3%ADcio-ferg-117aa090"}
           >
             <Linkedin />
-          </button>
+          </a>
         </div>
-        <div className="flex gap-6 font-medium">
-          <h2>Sobre</h2>
-          <h2>Termos de uso</h2>
-
-          <h2>Privacidade</h2>
-          <h2>Entre em contato</h2>
+        <div className="flex gap-6 font-medium cursor-pointer">
+          <Link href={"/legalterm"}>Termos de uso e Privacidade</Link>
+          <a href="mailto:mauricioferg@gmail.com">Entre em contato</a>
         </div>
       </div>
       <div className="w-full h-60 flex justify-center items-center gap-12 text-slate-500 font-medium">
