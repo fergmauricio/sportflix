@@ -2,7 +2,7 @@
 
 import { useProfileContext } from "@/contexts/ProfileContext";
 import clsx from "clsx";
-import { CircleChevronDown, MenuIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -105,13 +105,20 @@ export function Menu() {
           "absolute inset-0 transition-opacity delay-150 duration-150 ease-in-out ",
           "before:content-[''] before:absolute before:inset-0",
           "before:bg-gradient-to-b before:bg-black",
+          "shadow-[0_10px_20px_rgba(0,0,0,0.5)]",
+
           isScrolling ? "opacity-100" : "opacity-0",
           "before:-z-10"
         )}
       />
       <div className="w-full flex items-center">
-        <div className="text-2xl font-medium text-green-400 pl-8 sm:ml-4">
-          SPORTSFLIX
+        <div className="text-2xl font-medium text-green-400 pl-8 sm:ml-4 z-50">
+          <Link
+            className="cursor-pointer hover:transform hover:scale-130"
+            href="/portal"
+          >
+            SPORTSFLIX
+          </Link>
         </div>
 
         <div className={profileToggle}>
