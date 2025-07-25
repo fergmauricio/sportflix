@@ -159,7 +159,7 @@ export function MainBanner() {
 
           <div
             className={`relative opacity-0 transition-opacity duration-2000 ease-in-out box-border m-0 
-      px-[50px] pt-100 sm:pt-auto sm:justify-center md:justify-center lg:pt-120 pb-0 w-auto z-20 text-white flex flex-col gap-4 
+      px-[50px] pt-100 lg:pt-120 sm:justify-center  w-auto z-20 text-white flex flex-col gap-4 
       sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] ${
         isTransitioning ? "opacity-100" : "opacity-0"
       }`}
@@ -167,7 +167,7 @@ export function MainBanner() {
             <h1 className="text-4xl font-bold sm:text-6xl [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
               {currentSport?.title}
             </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl px-2 [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
+            <p className="text-xl sm:text-2xl md:text-3xl pl-1 [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
               {currentSport?.content}
             </p>
             <div className="flex gap-3 pt-6">
@@ -176,8 +176,8 @@ export function MainBanner() {
                 className={clsx(
                   "flex",
                   "justify-center items-center gap-2 transition",
-                  "bg-slate-300 hover:bg-slate-400 py-4 px-8 rounded-lg",
-                  "text-black text-2xl font-medium cursor-pointer"
+                  "bg-slate-300 hover:bg-slate-400 py-2 px-4 sm:py-4 sm:px-8 rounded-lg",
+                  "text-black text-xl sm:text-2xl font-medium cursor-pointer"
                 )}
               >
                 <PlayIcon /> Assistir
@@ -188,8 +188,8 @@ export function MainBanner() {
                 className={clsx(
                   "flex",
                   "justify-center items-center gap-2 transition",
-                  "bg-slate-900/70 hover:bg-slate-950 py-4 px-8 rounded-lg",
-                  "text-white text-2xl font-medium cursor-pointer"
+                  "bg-slate-900/70 hover:bg-slate-950 py-2 px-4 sm:py-4 sm:px-8 rounded-lg",
+                  "text-white text-xl sm:text-2xl font-medium cursor-pointer"
                 )}
               >
                 <InfoIcon /> Mais informações

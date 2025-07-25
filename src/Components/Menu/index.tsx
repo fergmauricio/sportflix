@@ -84,7 +84,7 @@ export function Menu() {
       <div
         className="absolute inset-0 
           before:content-[''] before:absolute before:inset-0
-          before:bg-gradient-to-b before:from-black/90 before:to-transparent
+          before:bg-gradient-to-b before:from-black/95 before:to-transparent
           before:-z-10"
       />
       <div className="w-full flex items-center">
