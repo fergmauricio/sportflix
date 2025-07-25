@@ -109,13 +109,13 @@ export function Carrousel({ title, type }: CarrouselProps) {
     <div className="relative w-screen h-[350px] md:h-[350px] overflow-visible mt-4">
       <h2 className="text-2xl sm:text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12 flex gap-2 items-center">
         {type === "rating" && (
-          <FaStar className="text-slate-300 mt-1 mr-1" size={20} />
+          <FaStar className="text-green-400 mt-1 mr-1" size={20} />
         )}
         {type === "customList" && (
-          <BsList className="text-slate-300 mt-1 mr-1" size={20} />
+          <BsList className="text-green-400 mt-1 mr-1" size={20} />
         )}
         {type === "standard" && (
-          <BsEmojiSunglasses className="text-slate-300 mt-1 mr-1" size={20} />
+          <BsEmojiSunglasses className="text-green-400 mt-1 mr-1" size={20} />
         )}
 
         {title}

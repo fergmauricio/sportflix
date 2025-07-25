@@ -56,8 +56,8 @@ export function Menu() {
   );
 
   const profileToggle = clsx(
-    "flex justify-center items-center gap-2 cursor-pointer p-2 transition",
-    "hover:bg-slate-950 hover:rounded-lg",
+    "flex justify-center items-center cursor-pointer p-2 transition",
+    "hover:transform hover:scale-[1.2]",
     "ml-auto mr-2 sm:mr-0",
     "b-none",
     "text-white",
@@ -124,7 +124,7 @@ export function Menu() {
                 width={30}
                 height={30}
                 priority={true}
-                className="sm:w-[40px] sm:h-[40px]"
+                className="mr-2 sm:mr-0 sm:w-[40px] sm:h-[40px]"
                 onClick={handleProfiles}
               />
             </>
