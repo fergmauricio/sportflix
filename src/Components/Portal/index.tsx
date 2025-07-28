@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import AnimateOnScroll from "../AnimateOnScroll";
 import clsx from "clsx";
 import SportsSearch from "../SportsSearch";
+import { Anchor } from "../Anchor";
 
 export function Portal() {
   const [isLoading, setIsLoading] = useState(true);
@@ -87,6 +88,7 @@ export function Portal() {
         <Container>
           <SportInfo />
         </Container>
+        <Anchor />
       </div>
     </div>
   );

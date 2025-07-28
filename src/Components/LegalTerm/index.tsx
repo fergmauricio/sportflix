@@ -1,14 +1,52 @@
+"use client";
 import { Container } from "@/Components/Container";
 import { Menu } from "@/Components/Menu";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+import SportsSearch from "../SportsSearch";
 
 export default function LegalTerm() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSearching, setIsSearching] = useState(false);
+  const [stringSearch, setStringSearch] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 text-white">
-      <div className={`transition-opacity duration-500 opacity-100`}>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 pt-40 text-white">
+      <div
+        className={`transition-opacity duration-500 ${
+          !isLoading ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <Container>
-          <Menu />
+          <Menu
+            cbSearchState={setIsSearching}
+            cbSearchString={setStringSearch}
+          />
         </Container>
-        <Container className="w-[90vw] sm:w-[70vw] m-auto pt-40">
+        <Container
+          className={clsx(
+            "transition-opacity ease-in-out",
+            isSearching ? "opacity-100 visible" : "opacity-0 hidden"
+          )}
+        >
+          <SportsSearch stringSearch={stringSearch} />
+        </Container>
+        <Container
+          className={clsx(
+            "w-[90vw] sm:w-[70vw] m-auto transition-opacity ease-in-out",
+            !isSearching ? "opacity-100" : "opacity-0"
+          )}
+        >
           <Container>
             <div className="space-y-10 mt-8">
               {/* Legal Terms Section */}

@@ -15,6 +15,7 @@ import { PlayIcon } from "lucide-react";
 import { Footer } from "../Footer";
 import { useSportContext } from "@/contexts/SportContext";
 import SportsSearch from "../SportsSearch";
+import { Anchor } from "../Anchor";
 
 type SportsListsProps = {
   type: "mylist" | "sportslist";
@@ -151,6 +152,7 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
         <Container>
           <Footer />
         </Container>
+        <Anchor />
       </div>
     </div>
   );
