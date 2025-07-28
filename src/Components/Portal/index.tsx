@@ -8,9 +8,13 @@ import { Menu } from "../Menu";
 import { SportInfo } from "../SportInfo";
 import { useEffect, useState } from "react";
 import AnimateOnScroll from "../AnimateOnScroll";
+import clsx from "clsx";
+import SportsSearch from "../SportsSearch";
 
 export function Portal() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isSearching, setIsSearching] = useState(false);
+  const [stringSearch, setStringSearch] = useState(null);
 
   useEffect(() => {
     setIsLoading(false);
@@ -24,9 +28,26 @@ export function Portal() {
         }`}
       >
         <Container>
-          <Menu />
+          <Menu
+            cbSearchState={setIsSearching}
+            cbSearchString={setStringSearch}
+          />
         </Container>
-        <Container>
+        <Container
+          className={clsx(
+            "pt-40 ",
+            "transition-opacity ease-in-out",
+            isSearching ? "opacity-100 visible" : "opacity-0 hidden"
+          )}
+        >
+          <SportsSearch stringSearch={stringSearch} />
+        </Container>
+        <Container
+          className={clsx(
+            "transition-opacity ease-in-out",
+            !isSearching ? "opacity-100" : "opacity-0"
+          )}
+        >
           <main className="flex flex-col box-content overflow-hidden">
             <section
               className="

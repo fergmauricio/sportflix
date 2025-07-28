@@ -42,7 +42,6 @@ export function ProfileChoose() {
   return (
     <>
       <div
-        class="animate-fade-in opacity-0"
         className={clsx(
           "text-2xl font-medium text-green-400",
           "fixed top-1/2 left-1/2 top-10 transform ",

@@ -16,6 +16,7 @@ type SportContextProps = {
   dispatch: React.Dispatch<SportActionModel>;
   fetchSports: () => Promise<void>;
   fetchSportsByRating: () => Promise<void>;
+  fetchSportsBySearch: (stringSearch: string) => Promise<void>;
   activeSport: (sport: SportModel) => void;
   clearActiveSport: () => void;
 };
@@ -61,6 +62,24 @@ export function SportContextProvider({ children }: SportContextProviderProps) {
     }
   };
 
+  const fetchSportsBySearch = async (stringSearch: string) => {
+    try {
+      if (stringSearch === "" || stringSearch.trim().length < 3) return;
+
+      const sportRepository: SportRepository = new JsonSportRepository();
+      const sports = await sportRepository.findAllPublicBySearch(
+        stringSearch.trim()
+      );
+
+      dispatch({
+        type: SportActionsTypes.INITIAL_SPORTS_SEARCH,
+        payload: sports,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const activeSport = (sport: SportModel) => {
     dispatch({ type: SportActionsTypes.ACTIVE_SPORT, payload: sport });
   };
@@ -76,6 +95,7 @@ export function SportContextProvider({ children }: SportContextProviderProps) {
         dispatch,
         fetchSports,
         fetchSportsByRating,
+        fetchSportsBySearch,
         activeSport,
         clearActiveSport,
       }}

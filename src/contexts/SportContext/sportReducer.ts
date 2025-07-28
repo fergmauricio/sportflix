@@ -33,6 +33,14 @@ export function sportReducer(
         sportsByRating: sports,
       };
     }
+    case SportActionsTypes.INITIAL_SPORTS_SEARCH: {
+      const sports = action.payload;
+
+      return {
+        ...state,
+        sportsBySearch: sports,
+      };
+    }
   }
 
   return state;

@@ -37,7 +37,6 @@ export function Carrousel({ title, type }: CarrouselProps) {
     }
 
     if (type === "rating") {
-      console.log("rat ", state.sportsByRating);
       if (state.sportsByRating) {
         setSourceData(state.sportsByRating);
       }

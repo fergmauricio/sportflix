@@ -2,17 +2,26 @@
 
 import { useProfileContext } from "@/contexts/ProfileContext";
 import clsx from "clsx";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, SearchIcon, XIcon } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useSportContext } from "@/contexts/SportContext";
 
-export function Menu() {
+type MenuProps = {
+  cbSearchState: React.Dispatch<React.SetStateAction<boolean>>;
+  cbSearchString: React.Dispatch<React.SetStateAction<boolean>> | null;
+};
+
+export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
   const { state, clearActiveProfile } = useProfileContext();
+  const { fetchSportsBySearch } = useSportContext();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
 
@@ -57,7 +66,7 @@ export function Menu() {
 
   const profileToggle = clsx(
     "flex justify-center items-center cursor-pointer p-2 transition",
-    "hover:transform hover:scale-[1.2]",
+
     "ml-auto mr-2 sm:mr-0",
     "b-none",
     "text-white",
@@ -79,6 +88,28 @@ export function Menu() {
     clearActiveProfile();
 
     router.push("/");
+  }
+
+  function handleSearchInput() {
+    const search = searchInputRef.current?.value;
+
+    if (search?.length > 2) {
+      cbSearchState(true);
+      cbSearchString(searchInputRef.current?.value);
+    } else {
+      cbSearchState(false);
+      cbSearchString(null);
+    }
+  }
+
+  function handleCloseSearch(
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) {
+    e.preventDefault();
+    setIsSearching(false);
+    searchInputRef.current.value = "";
+    handleSearchInput();
+    fetchSportsBySearch("");
   }
 
   const links = [
@@ -114,7 +145,7 @@ export function Menu() {
       <div className="w-full flex items-center">
         <div className="text-2xl font-medium text-green-400 pl-8 sm:ml-4 z-50">
           <Link
-            className="cursor-pointer hover:transform hover:scale-130"
+            className="cursor-pointer hover:transform hover:scale-120"
             href="/portal"
           >
             SPORTSFLIX
@@ -122,6 +153,51 @@ export function Menu() {
         </div>
 
         <div className={profileToggle}>
+          <div
+            className={clsx(
+              "relative mr-4 ",
+              "transition-opacity delay-150 ease-in-out",
+              "flex justify-center items-center",
+              isSearching ? "opacity-100" : "opacity-0 hidden"
+            )}
+          >
+            <input
+              type="text"
+              placeholder="Buscar..."
+              ref={searchInputRef}
+              onChange={handleSearchInput}
+              className="w-[300px] h-[34px] border-1 border-green-400 rounded pl-8 text-[.9rem]"
+            />
+            <div className="absolute left-2 ">
+              <SearchIcon size={18} />
+            </div>
+            <div className="absolute right-2">
+              <button
+                onClick={handleCloseSearch}
+                className="cursor-pointer transition hover:transform hover:scale-120"
+              >
+                <XIcon size={18} />
+              </button>
+            </div>
+          </div>
+          <div
+            className={clsx(
+              "relative mr-4 point",
+              "transition-opacity delay-150 ease-in-out",
+              "flex justify-center items-center",
+              !isSearching ? "opacity-100" : "opacity-0 hidden"
+            )}
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setIsSearching(true);
+              }}
+              className="cursor-pointer transition hover:transform hover:scale-120"
+            >
+              <SearchIcon size={32} />
+            </button>
+          </div>
           {state.activeProfile && (
             <>
               <Image
@@ -131,7 +207,7 @@ export function Menu() {
                 width={30}
                 height={30}
                 priority={true}
-                className="mr-2 sm:mr-0 sm:w-[40px] sm:h-[40px]"
+                className="mr-2 sm:mr-0 transition hover:transform hover:scale-[1.2]"
                 onClick={handleProfiles}
               />
             </>

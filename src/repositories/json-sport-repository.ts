@@ -37,6 +37,19 @@ export class JsonSportRepository implements SportRepository {
     return sortedSports;
   }
 
+  async findAllPublicBySearch(searchString: string): Promise<SportModel[]> {
+    const searchLower = searchString.toLowerCase();
+
+    const sports = sportsData.posts.filter((post) => {
+      return (
+        post.title.toLowerCase().includes(searchLower) ||
+        post.content.toLowerCase().includes(searchLower)
+      );
+    });
+
+    return sports;
+  }
+
   async findById(id: string): Promise<SportModel> {
     const sports = await this.findAllPublic();
     const sport = sports.find((sport) => sport.id === id);
