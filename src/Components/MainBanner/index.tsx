@@ -116,9 +116,8 @@ export function MainBanner() {
               id={currentSport?.id}
               src={`/uploads/${currentSport?.image}`}
               alt={currentSport?.title}
-              layout="fill"
-              objectFit="cover"
-              priority
+              fill
+              sizes="100vw"
               className="object-cover select-none z-0 transition"
             />
 

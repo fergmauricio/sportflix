@@ -13,9 +13,7 @@ export default function PortalPage() {
         <ListProfileSportContextProvider>
           <SportContextProvider>
             <SportReviewContextProvider>
-              <Suspense fallback={<SpinLoader className="min-h-20 mb-16" />}>
-                <Portal />
-              </Suspense>
+              <Portal />
             </SportReviewContextProvider>
           </SportContextProvider>
         </ListProfileSportContextProvider>

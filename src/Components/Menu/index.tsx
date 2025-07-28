@@ -206,7 +206,6 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
                 alt={state.activeProfile.name || ""}
                 width={30}
                 height={30}
-                priority={true}
                 className="mr-2 sm:mr-0 transition hover:transform hover:scale-[1.2]"
                 onClick={handleProfiles}
               />

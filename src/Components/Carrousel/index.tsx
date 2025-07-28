@@ -87,13 +87,13 @@ export function Carrousel({ title, type }: CarrouselProps) {
     if (isFloatingNumber) {
       const integerNumber = ratingStr.split(".")[0];
       for (let i = 1; i < integerNumber; i++) {
-        stars.push(<FaStar className="text-green-400" />);
+        stars.push(<FaStar key={i} className="text-green-400" />);
       }
-      stars.push(<FaStarHalfAlt className="text-green-400" />);
-      stars.push(<FaRegStar className="text-green-400" />);
+      stars.push(<FaStarHalfAlt key={4} className="text-green-400" />);
+      stars.push(<FaRegStar key={5} className="text-green-400" />);
     } else {
       for (let i = 1; i <= rating; i++) {
-        stars.push(<FaStar className="text-green-400" />);
+        stars.push(<FaStar key={i} className="text-green-400" />);
       }
     }
 
@@ -177,9 +177,9 @@ export function Carrousel({ title, type }: CarrouselProps) {
                   <Image
                     src={`/uploads/${item.image}`}
                     alt={item.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="w-full h-full"
+                    fill
+                    sizes="(max-width: 768px) 250px, 400px"
+                    className="object-cover"
                     priority={index < visibleCards}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
