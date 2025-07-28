@@ -34,6 +34,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
 
     const timerId = setTimeout(() => {
       fetchSportsBySearch(stringSearch !== null ? stringSearch.trim() : "");
+      setIsLoading(false);
     }, 1000);
 
     return () => {
@@ -46,8 +47,6 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
 
     if (!!myListState[profileState.activeProfile?.id]) {
       setSourceData(sportState.sportsBySearch);
-
-      setIsLoading(false);
     }
   }, [myListState, profileState, sportState.sportsBySearch]);
 
@@ -84,7 +83,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
           !isLoading ? "opacity-100" : "opacity-0"
         }`}
       >
-        <Container className="flex justify-center items-center pt-30">
+        <Container className="flex justify-center items-center ">
           <h1 className="font-bold text-4xl text-slate-200">
             Busca por{" "}
             <span className="text-green-400 italic">{stringSearch}</span>

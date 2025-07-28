@@ -12,6 +12,7 @@ import { SportActionsTypes } from "@/contexts/SportContext/sportActions";
 
 export function MainBanner() {
   const { state, fetchSports, activeSport, dispatch } = useSportContext();
+  const [requiresUserInteraction, setRequiresUserInteraction] = useState(false);
 
   const [currentSportIndex, setCurrentSportIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -69,12 +70,41 @@ export function MainBanner() {
   }, [currentSportIndex, isLoading]);
 
   useEffect(() => {
-    if (showVideo && videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.error("Erro ao reproduzir vídeo:", error);
+    const videoElement = videoRef.current;
+    if (!videoElement || !showVideo || !currentSport?.video) return;
+
+    const handlePlay = async () => {
+      try {
+        await videoElement.play();
+        setRequiresUserInteraction(false);
+      } catch (err) {
+        console.log("Autoplay bloqueado. Aguardando interação...");
+        setRequiresUserInteraction(true);
+      }
+    };
+
+    // Configurações essenciais para autoplay
+    videoElement.muted = true;
+    videoElement.playsInline = true;
+    videoElement.preload = "auto";
+
+    // Tenta reproduzir
+    handlePlay();
+
+    // Prepara listeners para interação do usuário
+    const interactionEvents = ["click", "touchstart", "keydown"];
+    const handleUserInteraction = () => handlePlay();
+
+    interactionEvents.forEach((event) => {
+      document.addEventListener(event, handleUserInteraction, { once: true });
+    });
+
+    return () => {
+      interactionEvents.forEach((event) => {
+        document.removeEventListener(event, handleUserInteraction);
       });
-    }
-  }, [showVideo]);
+    };
+  }, [showVideo, currentSport?.video]);
 
   if (isLoading || !currentSport) {
     return (
@@ -99,8 +129,8 @@ export function MainBanner() {
   return (
     <div className="relative w-full h-full">
       <div
-        className={`absolute inset-0 flex justify-center items-center bg-black transition-opacity duration-500 ${
-          isLoading ? "opacity-100 z-50" : "opacity-0 pointer-events-none"
+        className={`absolute inset-0 flex justify-center items-center bg-black transition-opacity duration-500 z-50 ${
+          isLoading ? "opacity-100 " : "opacity-0 pointer-events-none"
         }`}
       >
         <SpinLoader />
@@ -108,7 +138,7 @@ export function MainBanner() {
       {!isLoading && currentSport && (
         <div className="relative w-full h-full opacity-0 animate-fadeIn">
           <div
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
               showVideo || isLoading ? "opacity-0" : "opacity-100"
             }`}
           >
@@ -118,47 +148,39 @@ export function MainBanner() {
               alt={currentSport?.title}
               fill
               sizes="100vw"
-              className="object-cover select-none z-0 transition"
+              className="object-cover select-none"
             />
 
-            <div
-              className="absolute inset-0 
-                    before:content-[''] before:absolute before:inset-0
-                    before:bg-gradient-to-b before:from-transparent before:via-black/70 before:to-black/90
-                    before:z-10"
-            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black/90 pointer-events-none" />
           </div>
           {showVideo && currentSport?.video && (
             <>
               <div
-                className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+                className={`absolute inset-0 transition-opacity duration-2000 ease-in-out z-0 ${
                   showVideo ? "opacity-100" : "opacity-0"
                 }`}
               >
                 <video
                   ref={videoRef}
-                  className="absolute inset-0 w-full h-full object-cover select-none z-0 transition"
+                  className="absolute inset-0 w-full h-full object-cover select-none"
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
-                  disablePictureInPicture
-                  disableRemotePlayback
                 >
                   <source
                     src={`/uploads/${currentSport?.video}`}
                     type="video/mp4"
                   />
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50 pointer-events-none" />
               </div>
             </>
           )}
 
           <div
-            className={`relative opacity-0 transition-opacity duration-2000 ease-in-out box-border m-0 
-      px-[50px] pt-100 lg:pt-120 sm:justify-center  w-auto z-20 text-white flex flex-col gap-4 
+            className={`relative z-30 opacity-0 transition-opacity duration-2000 ease-in-out box-border m-0 
+      px-[50px]  lg:pt-100  w-auto h-full  text-white flex flex-col justify-center gap-4 
       sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] ${
         isTransitioning ? "opacity-100" : "opacity-0"
       }`}
@@ -169,7 +191,7 @@ export function MainBanner() {
             <p className="text-xl sm:text-2xl md:text-3xl pl-1 [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
               {currentSport?.content}
             </p>
-            <div className="flex gap-3 pt-6">
+            <div className="flex gap-3 pt-6 z-40">
               <button
                 onClick={handleGoTo}
                 className={clsx(

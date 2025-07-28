@@ -6,12 +6,6 @@ function handleSocial(type: string) {}
 export function Footer() {
   return (
     <footer>
-      <div
-        className="absolute inset-0 
-          before:content-[''] before:absolute before:inset-0
-          before:bg-gradient-to-t before:from-black/90 before:to-transparent
-          before:-z-10"
-      />
       <div className="relative w-full h-20 flex flex-col pt-60 justify-center items-center gap-12 text-slate-400">
         <div className="flex gap-6 text-green-400">
           <a

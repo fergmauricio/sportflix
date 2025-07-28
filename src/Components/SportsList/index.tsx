@@ -14,6 +14,7 @@ import { Menu } from "../Menu";
 import { PlayIcon } from "lucide-react";
 import { Footer } from "../Footer";
 import { useSportContext } from "@/contexts/SportContext";
+import SportsSearch from "../SportsSearch";
 
 type SportsListsProps = {
   type: "mylist" | "sportslist";
@@ -23,19 +24,31 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isSearching, setIsSearching] = useState(false);
+  const [stringSearch, setStringSearch] = useState(null);
 
-  const { state: sportState } = useSportContext();
+  const { state: sportState, fetchSports } = useSportContext();
   const { state: profileState } = useProfileContext();
   const { state: myListState } = useProfileSportContext();
   const [sourceData, setSourceData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(false);
+    const loadSports = async () => {
+      try {
+        setIsLoading(true);
+        await fetchSports();
+      } catch (error) {
+        console.error("Erro:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadSports();
   }, []);
 
   useEffect(() => {
     if (!profileState?.activeProfile) return;
-    console.log("sp ", sportState);
+
     if (!!myListState[profileState.activeProfile?.id]) {
       if (type === "mylist") {
         setSourceData(myListState[profileState.activeProfile?.id]);
@@ -50,28 +63,49 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 pt-40 text-white">
       <div
         className={`transition-opacity duration-500 ${
           !isLoading ? "opacity-100" : "opacity-0"
         }`}
       >
         <Container>
-          <Menu />
+          <Menu
+            cbSearchState={setIsSearching}
+            cbSearchString={setStringSearch}
+          />
         </Container>
-        <Container className="flex justify-center items-center pt-30">
+        <Container
+          className={clsx(
+            "transition-opacity ease-in-out",
+            isSearching ? "opacity-100 visible" : "opacity-0 hidden"
+          )}
+        >
+          <SportsSearch stringSearch={stringSearch} />
+        </Container>
+        <Container
+          className={clsx(
+            "flex justify-center items-center transition-opacity ease-in-out",
+            !isSearching ? "opacity-100" : "opacity-0"
+          )}
+        >
           <h1 className="font-bold text-4xl text-slate-200">
             {type === "mylist" && "Minha Lista Customizada"}
             {type === "sportslist" && "Catálogo de Esportes"}
           </h1>
         </Container>
-        <Container>
-          <div className="flex flex-col gap-4 justify-center items-center pt-10">
+        <Container
+          className={clsx(
+            "transition-opacity ease-in-out",
+            !isSearching ? "opacity-100" : "opacity-0"
+          )}
+        >
+          <div className="flex flex-col gap-4 justify-center items-center pt-10 z-0">
             {sourceData.length > 0 &&
               sourceData.map((item, index) => (
                 <div
                   key={`${item.id}`}
-                  className="relative flex flex-col sm:flex-row w-full gap-4 justify-center items-center m-auto inset-0 p-4 z-10"
+                  className="relative flex flex-col sm:flex-row w-full gap-4 justify-center items-center m-auto inset-0 p-4 z-0"
                 >
                   <div
                     onClick={(e) => {

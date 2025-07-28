@@ -33,7 +33,7 @@ export function SportContextProvider({ children }: SportContextProviderProps) {
   const [state, dispatch] = useReducer(sportReducer, initialSportState);
 
   useEffect(() => {
-    fetchSports();
+    //fetchSports();
     fetchSportsByRating();
   }, []);
 
