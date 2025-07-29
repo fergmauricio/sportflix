@@ -147,7 +147,11 @@ export function ProfileChoose() {
             <div className="relative">
               <button
                 onClick={() => {
-                  setEditingProfile({});
+                  setEditingProfile({
+                    id: "",
+                    name: "",
+                    image: "",
+                  });
                   setIsAddingProfile(true);
                 }}
                 className={clsx(

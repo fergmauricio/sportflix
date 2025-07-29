@@ -6,6 +6,7 @@ import { ProfileActionModel, ProfileActionsTypes } from "./profileActions";
 import { ProfileStateModel } from "@/models/profile-state-model";
 import { profileReducer } from "../ProfileContext/profileReducer";
 import { initialProfileState } from "./initialProfileState";
+import { SavedProfileModel } from "@/models/savedProfile-model";
 
 type ProfileContextProps = {
   state: ProfileStateModel;
@@ -70,15 +71,15 @@ export function ProfileContextProvider({
   const fetchProfiles = () => {
     try {
       const profiles = [
-        { id: 1, name: "Futebol Americano", image: "avatar_01.png" },
-        { id: 2, name: "Golfe", image: "avatar_02.png" },
-        { id: 3, name: "Boliche", image: "avatar_03.png" },
-        { id: 4, name: "Sinuca", image: "avatar_04.png" },
-        { id: 5, name: "Basquete", image: "avatar_05.png" },
-        { id: 6, name: "Baseball", image: "avatar_06.png" },
-        { id: 7, name: "Tênis", image: "avatar_07.png" },
-        { id: 8, name: "Futebol", image: "avatar_08.png" },
-        { id: 9, name: "Vôley", image: "avatar_09.png" },
+        { id: "1", name: "Futebol Americano", image: "avatar_01.png" },
+        { id: "2", name: "Golfe", image: "avatar_02.png" },
+        { id: "3", name: "Boliche", image: "avatar_03.png" },
+        { id: "4", name: "Sinuca", image: "avatar_04.png" },
+        { id: "5", name: "Basquete", image: "avatar_05.png" },
+        { id: "6", name: "Baseball", image: "avatar_06.png" },
+        { id: "7", name: "Tênis", image: "avatar_07.png" },
+        { id: "8", name: "Futebol", image: "avatar_08.png" },
+        { id: "9", name: "Vôley", image: "avatar_09.png" },
       ];
 
       dispatch({
@@ -101,7 +102,9 @@ export function ProfileContextProvider({
     const profileData = localStorage.getItem("savedProfile");
 
     if (profileData) {
-      const profileParsed = Object.values(JSON.parse(profileData));
+      const profileParsed = Object.values(
+        JSON.parse(profileData)
+      ) as SavedProfileModel[];
 
       const editedProfile = profileParsed.map((p) => {
         if (p.id === profile.id) {
@@ -126,7 +129,9 @@ export function ProfileContextProvider({
     const profileData = localStorage.getItem("savedProfile");
 
     if (profileData) {
-      const profileParsed = Object.values(JSON.parse(profileData));
+      const profileParsed = Object.values(
+        JSON.parse(profileData)
+      ) as SavedProfileModel[];
 
       console.log("parsed ", profileParsed);
       const editedProfile = profileParsed.filter((p) => p.id !== profile.id);

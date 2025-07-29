@@ -16,7 +16,7 @@ import { useSportContext } from "@/contexts/SportContext";
 import { SpinLoader } from "../SpinLoader";
 
 type SportsSearchProps = {
-  stringSearch: string;
+  stringSearch: string | null;
 };
 
 export default function SportsSearch({ stringSearch }: SportsSearchProps) {
@@ -27,7 +27,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
   const { state: sportState, fetchSportsBySearch } = useSportContext();
   const { state: profileState } = useProfileContext();
   const { state: myListState } = useProfileSportContext();
-  const [sourceData, setSourceData] = useState([]);
+  const [sourceData, setSourceData] = useState(Array<SportModel>);
 
   useEffect(() => {
     setIsLoading(true);
@@ -98,7 +98,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
               <span className="italic">Nenhum resultado encontrado.</span>
             )}
             {sourceData.length > 0 &&
-              sourceData.map((item, index) => (
+              sourceData.map((item) => (
                 <div
                   key={`${item.id}`}
                   className="relative flex flex-col sm:flex-row w-full gap-4 justify-center items-center m-auto inset-0 p-4 z-10"

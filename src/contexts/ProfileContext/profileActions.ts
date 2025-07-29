@@ -25,7 +25,6 @@ export type ProfileActionModel =
     }
   | {
       type: ProfileActionsTypes.CLEAR_PROFILE;
-      payload: ProfileModel;
     }
   | {
       type: ProfileActionsTypes.ADD_PROFILE;

@@ -1,8 +1,6 @@
 import { Github, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 
-function handleSocial(type: string) {}
-
 export function Footer() {
   return (
     <footer>

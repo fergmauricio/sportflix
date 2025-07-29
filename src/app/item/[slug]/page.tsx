@@ -1,10 +1,9 @@
-import { SpinLoader } from "@/components/SpinLoader";
+import { SpinLoader } from "@/Components/SpinLoader";
 import { SportVideo } from "@/Components/SportVideo";
 import { JsonSportRepository } from "@/repositories/json-sport-repository";
 
 import { Metadata } from "next";
 
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 export const dynamic = "force-static";

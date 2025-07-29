@@ -17,7 +17,7 @@ export type ProfileSportActionModel =
     }
   | {
       type: ProfileSportActionsTypes.INITIAL_CUSTOMLIST;
-      payload: { profileId: ProfileModel["id"] & string };
+      payload: { profileId: string; sports: SportModel[] };
     }
   | {
       type: ProfileSportActionsTypes.CLEAR_CUSTOMLIST;

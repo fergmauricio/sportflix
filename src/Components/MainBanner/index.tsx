@@ -12,7 +12,7 @@ import { SportActionsTypes } from "@/contexts/SportContext/sportActions";
 
 export function MainBanner() {
   const { state, fetchSports, activeSport, dispatch } = useSportContext();
-  const [requiresUserInteraction, setRequiresUserInteraction] = useState(false);
+  //const [requiresUserInteraction, setRequiresUserInteraction] = useState(false);
 
   const [currentSportIndex, setCurrentSportIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -76,22 +76,17 @@ export function MainBanner() {
     const handlePlay = async () => {
       try {
         await videoElement.play();
-        setRequiresUserInteraction(false);
-      } catch (err) {
-        console.log("Autoplay bloqueado. Aguardando interação...");
-        setRequiresUserInteraction(true);
+      } catch (e) {
+        console.log("Autoplay bloqueado. Aguardando interação...", e);
       }
     };
 
-    // Configurações essenciais para autoplay
     videoElement.muted = true;
     videoElement.playsInline = true;
     videoElement.preload = "auto";
 
-    // Tenta reproduzir
     handlePlay();
 
-    // Prepara listeners para interação do usuário
     const interactionEvents = ["click", "touchstart", "keydown"];
     const handleUserInteraction = () => handlePlay();
 
@@ -114,7 +109,7 @@ export function MainBanner() {
     );
   }
 
-  function handleGoTo(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleGoTo(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
     if (!activeSport) return;

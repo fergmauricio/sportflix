@@ -5,10 +5,11 @@ export type SportModel = {
   elenco: Array<string>;
   origem: string;
   datacriacao: string;
-  rating: string;
+  rating: number;
   image: string;
   video: string;
   content: string;
+  fullContent: string;
   published: boolean;
   createdAt: string;
   updatedAt: string;

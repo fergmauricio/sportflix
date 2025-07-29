@@ -8,16 +8,19 @@ import {
 
 import { sportReviewReducer } from "./SportReviewReducer";
 import { SportReviewStateModel } from "@/models/sport-review-state-model";
+import { SportReviewModel } from "@/models/sport-review-model";
 
 const initialState: SportReviewStateModel = {};
 
 type SportReviewContextProps = {
   state: SportReviewStateModel;
   dispatch: React.Dispatch<SportReviewActionModel>;
-  fetchSportReviewByProfile: (
-    profileId: Pick<SportReviewStateModel, "profileId">
-  ) => void;
-  addSportReview: (review: SportReviewStateModel) => void;
+  fetchSportReviewByProfile: (profileId: string) => void;
+  addSportReview: (review: {
+    profileId: string;
+    sportId: string;
+    type: SportReviewModel["type"];
+  }) => void;
 };
 
 export const SportReviewContext = createContext<SportReviewContextProps>(
@@ -37,15 +40,13 @@ export function SportReviewContextProvider({
     const storageState = localStorage.getItem("activeProfile");
 
     if (storageState) {
-      const parsedProfile = JSON.parse(storageState) as SportReviewStateModel;
+      const parsedProfile = JSON.parse(storageState);
 
       const storageSportReview = localStorage.getItem("mySportReview");
 
       if (storageSportReview === null || storageSportReview === "") return;
 
-      const parsedSportReview = JSON.parse(
-        storageSportReview
-      ) as SportReviewStateModel;
+      const parsedSportReview = JSON.parse(storageSportReview);
 
       dispatch({
         type: SportReviewActionsTypes.INITIAL_SPORTREVIEW,
@@ -57,7 +58,7 @@ export function SportReviewContextProvider({
     }
   }, []);
 
-  const fetchSportReviewByProfile = ({ profileId }: SportReviewStateModel) => {
+  const fetchSportReviewByProfile = (profileId: string) => {
     return state[profileId] || [];
   };
 
@@ -69,7 +70,11 @@ export function SportReviewContextProvider({
     profileId,
     sportId,
     type,
-  }: SportReviewStateModel): void => {
+  }: {
+    profileId: string;
+    sportId: string;
+    type: "like" | "dislike" | "fan" | null;
+  }): void => {
     const storageState = localStorage.getItem("mySportReview");
     let parsedStorageState = null;
 

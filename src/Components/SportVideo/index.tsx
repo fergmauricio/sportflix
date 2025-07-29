@@ -22,7 +22,7 @@ export function SportVideo({ sport }: SportVideoProps) {
     }, 1000);
   }, []);
 
-  function handleGoBack(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleGoBack(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
     router.push(`/portal`);

@@ -15,7 +15,7 @@ import { Anchor } from "../Anchor";
 export function Portal() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
-  const [stringSearch, setStringSearch] = useState(null);
+  const [stringSearch, setStringSearch] = useState("");
 
   useEffect(() => {
     setIsLoading(false);

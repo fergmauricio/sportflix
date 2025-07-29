@@ -8,7 +8,7 @@ import SportsSearch from "../SportsSearch";
 export default function LegalTerm() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
-  const [stringSearch, setStringSearch] = useState(null);
+  const [stringSearch, setStringSearch] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,7 +49,6 @@ export default function LegalTerm() {
         >
           <Container>
             <div className="space-y-10 mt-8">
-              {/* Legal Terms Section */}
               <section>
                 <h2 className="text-2xl font-bold mb-4 text-green-500">
                   Informações Legais
@@ -87,7 +86,6 @@ export default function LegalTerm() {
                 </div>
               </section>
 
-              {/* Footer */}
               <footer className="text-center mt-12 pt-8 border-t border-slate-700">
                 <div className="mb-6">
                   <p>

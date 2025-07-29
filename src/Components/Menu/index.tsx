@@ -11,7 +11,7 @@ import { useSportContext } from "@/contexts/SportContext";
 
 type MenuProps = {
   cbSearchState: React.Dispatch<React.SetStateAction<boolean>>;
-  cbSearchString: React.Dispatch<React.SetStateAction<boolean>> | null;
+  cbSearchString: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
@@ -91,25 +91,26 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
   }
 
   function handleSearchInput() {
-    const search = searchInputRef.current?.value;
+    const search = searchInputRef.current?.value || "";
 
-    if (search?.length > 2) {
-      cbSearchState(true);
-      cbSearchString(searchInputRef.current?.value);
-    } else {
-      cbSearchState(false);
-      cbSearchString(null);
+    if (typeof cbSearchState === "function") {
+      cbSearchState(search.length > 2);
+    }
+
+    if (typeof cbSearchString === "function") {
+      cbSearchString(search);
     }
   }
 
   function handleCloseSearch(
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
     e.preventDefault();
     setIsSearching(false);
-    searchInputRef.current.value = "";
     handleSearchInput();
     fetchSportsBySearch("");
+
+    if (searchInputRef.current) searchInputRef.current.value = "";
   }
 
   const links = [

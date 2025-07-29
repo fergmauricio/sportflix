@@ -36,7 +36,7 @@ export function SportInfo() {
     if (profileState?.activeProfile?.id && sportState.activeSport) {
       const sportsForProfile = customLists[profileState.activeProfile.id] || [];
       setIsInList(
-        sportsForProfile.some((s) => s.id === sportState.activeSport.id)
+        sportsForProfile.some((s) => s.id === sportState.activeSport?.id)
       );
     } else {
       setIsInList(false);
@@ -48,7 +48,7 @@ export function SportInfo() {
       return null;
 
     const review = SportReviewState[profileState.activeProfile?.id].find(
-      (item) => item.sportId === sportState.activeSport.id
+      (item) => item.sportId === sportState.activeSport?.id
     );
 
     return review?.type || null;
@@ -59,15 +59,15 @@ export function SportInfo() {
 
     if (isInList) {
       removeProfileSport(
-        profileState.activeProfile.id,
+        profileState.activeProfile?.id,
         sportState.activeSport.id
       );
     } else {
-      addProfileSport(profileState.activeProfile.id, sportState.activeSport);
+      addProfileSport(profileState.activeProfile?.id, sportState.activeSport);
     }
   };
 
-  function handleGoTo(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+  function handleGoTo(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
     router.push(`/item/${sportState.activeSport?.slug}`);
@@ -77,7 +77,7 @@ export function SportInfo() {
     clearActiveSport();
   }
 
-  function makeReview(type: string): void {
+  function makeReview(type: "like" | "dislike" | "fan"): void {
     if (!profileState.activeProfile?.id || !sportState.activeSport?.id) return;
 
     const currentType = getCurrentReviewType();
@@ -89,9 +89,6 @@ export function SportInfo() {
       type: newType,
     });
   }
-
-  const reviewClass =
-    "flex justify-center items-center w-10 h-10 rounded-xl cursor-pointer transition";
 
   if (!sportState.activeSport) return null;
 

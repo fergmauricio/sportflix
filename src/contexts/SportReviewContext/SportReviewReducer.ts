@@ -1,7 +1,4 @@
-import { ProfileSportStateModel } from "@/models/profile-sport-state-model";
-
 import {
-  ProfileSportActionModel,
   SportReviewActionsTypes,
   SportReviewActionModel,
 } from "./SportReviewActions";
@@ -36,7 +33,6 @@ export function sportReviewReducer(
       );
 
       if (sportAndTypeExists) {
-        // Return sem o novo esporte
         return {
           ...state,
           [profileId]: [...filteredSports],

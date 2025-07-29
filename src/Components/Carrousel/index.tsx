@@ -7,12 +7,10 @@ import clsx from "clsx";
 import { ArrowLeftIcon, ArrowRightIcon, InfoIcon } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { SpinLoader } from "../SpinLoader";
+
 import { useProfileSportContext } from "@/contexts/ListProfileSportContext";
 import { useProfileContext } from "@/contexts/ProfileContext";
-import { FaRegStar, FaStar, FaStarHalfAlt, FaThList } from "react-icons/fa";
-import { CiStar } from "react-icons/ci";
-import { VscTasklist } from "react-icons/vsc";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { BsEmojiSunglasses, BsList } from "react-icons/bs";
 
 type CarrouselProps = {
@@ -21,13 +19,13 @@ type CarrouselProps = {
 };
 
 export function Carrousel({ title, type }: CarrouselProps) {
-  const { state, dispatch, fetchSportsByRating } = useSportContext();
+  const { state, dispatch } = useSportContext();
   const { state: profileState } = useProfileContext();
   const { state: myListState } = useProfileSportContext();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(5);
-  const [sourceData, setSourceData] = useState([]);
+  const [sourceData, setSourceData] = useState<SportModel[]>([]);
 
   useEffect(() => {
     if (type === "standard") {
@@ -85,7 +83,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
     const isFloatingNumber = ratingStr.indexOf(".") !== -1;
 
     if (isFloatingNumber) {
-      const integerNumber = ratingStr.split(".")[0];
+      const integerNumber = parseInt(ratingStr.split(".")[0]);
       for (let i = 1; i < integerNumber; i++) {
         stars.push(<FaStar key={i} className="text-green-400" />);
       }
@@ -187,7 +185,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
                 {type === "rating" && (
                   <div className="flex mt-4 gap-1 justify-start items-center">
                     <span>{item.rating}</span>
-                    {renderStars(item.rating)}
+                    {renderStars(Number(item.rating))}
                   </div>
                 )}
               </div>

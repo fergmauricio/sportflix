@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { ProfileModel } from "@/models/profile-model";
+
 import {
   ProfileSportActionModel,
   ProfileSportActionsTypes,
@@ -16,12 +16,9 @@ const initialState: ProfileSportStateModel = {};
 type ProfileSportContextProps = {
   state: ProfileSportStateModel;
   dispatch: React.Dispatch<ProfileSportActionModel>;
-  fetchSportsByProfile: (id: Pick<ProfileModel, "id">) => void;
-  addProfileSport: (id: Pick<ProfileModel, "id">, sport: SportModel) => void;
-  removeProfileSport: (
-    id: Pick<ProfileModel, "id">,
-    sport: Pick<SportModel, "id">
-  ) => void;
+  fetchSportsByProfile: (id: string) => void;
+  addProfileSport: (id: string, sport: SportModel) => void;
+  removeProfileSport: (id: string, sport: string) => void;
 };
 
 export const ListProfileSportContext = createContext<ProfileSportContextProps>(
@@ -41,15 +38,13 @@ export function ListProfileSportContextProvider({
     const storageState = localStorage.getItem("activeProfile");
 
     if (storageState) {
-      const parsedProfile = JSON.parse(storageState) as ProfileSportStateModel;
+      const parsedProfile = JSON.parse(storageState);
 
       const storageListProfile = localStorage.getItem("myCustomListProfile");
 
       if (storageListProfile === null || storageListProfile === "") return;
 
-      const parsedListProfile = JSON.parse(
-        storageListProfile
-      ) as ProfileSportStateModel;
+      const parsedListProfile = JSON.parse(storageListProfile);
 
       dispatch({
         type: ProfileSportActionsTypes.INITIAL_CUSTOMLIST,
@@ -61,10 +56,7 @@ export function ListProfileSportContextProvider({
     }
   }, []);
 
-  const removeProfileSport = (
-    id: Pick<ProfileModel, "id">,
-    sportId: Pick<SportModel, "id">
-  ) => {
+  const removeProfileSport = (id: string, sportId: string) => {
     const storageState = localStorage.getItem("myCustomListProfile");
 
     if (storageState !== null) {
@@ -88,7 +80,7 @@ export function ListProfileSportContextProvider({
     });
   };
 
-  const fetchSportsByProfile = (id: Pick<ProfileModel, "id">) => {
+  const fetchSportsByProfile = (id: string) => {
     return state[id] || [];
   };
 
@@ -96,10 +88,7 @@ export function ListProfileSportContextProvider({
     localStorage.setItem("myCustomListProfile", JSON.stringify(json));
   };
 
-  const addProfileSport = (
-    id: Pick<ProfileModel, "id">,
-    sport: SportModel
-  ): void => {
+  const addProfileSport = (id: string, sport: SportModel): void => {
     const storageState = localStorage.getItem("myCustomListProfile");
     let parsedStorageState = null;
 

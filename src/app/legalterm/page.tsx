@@ -1,4 +1,3 @@
-import About from "@/Components/About";
 import LegalTerm from "@/Components/LegalTerm";
 import { ListProfileSportContextProvider } from "@/contexts/ListProfileSportContext";
 import { ProfileContextProvider } from "@/contexts/ProfileContext";

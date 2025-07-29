@@ -2,7 +2,7 @@ import { useProfileContext } from "@/contexts/ProfileContext";
 import { ProfileModel } from "@/models/profile-model";
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DefaultInput } from "../DefaultInput";
 import { CheckIcon, TrashIcon } from "lucide-react";
 
@@ -19,9 +19,7 @@ export function ProfileAdd({
 }: ProfileAddProps) {
   const { state, fetchProfiles, addProfile, editProfile, deleteProfile } =
     useProfileContext();
-  const idProfileInput = useRef<HTMLInputElement>(null);
-  const nameProfileInput = useRef<HTMLInputElement>(null);
-  const imgProfileInput = useRef<HTMLInputElement>(null);
+
   const [formData, setFormData] = useState({
     id: editingProfile?.id || "",
     name: editingProfile?.name || "",

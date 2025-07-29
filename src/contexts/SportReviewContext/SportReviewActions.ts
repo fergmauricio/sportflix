@@ -1,6 +1,4 @@
-import { ProfileModel } from "@/models/profile-model";
 import { SportReviewModel } from "@/models/sport-review-model";
-import { SportModel } from "@/models/sport-model";
 import { SportReviewStateModel } from "@/models/sport-review-state-model";
 
 export enum SportReviewActionsTypes {
@@ -14,8 +12,8 @@ export type SportReviewActionModel =
   | {
       type: SportReviewActionsTypes.ADD_SPORTREVIEW;
       payload: {
-        profileId: SportReviewStateModel["profileId"] & string;
-        sportId: SportReviewStateModel["sportId"] & string;
+        profileId: string;
+        sportId: string;
         type: SportReviewModel["type"];
       };
     }

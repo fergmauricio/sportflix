@@ -26,12 +26,12 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isSearching, setIsSearching] = useState(false);
-  const [stringSearch, setStringSearch] = useState(null);
+  const [stringSearch, setStringSearch] = useState("");
 
   const { state: sportState, fetchSports } = useSportContext();
   const { state: profileState } = useProfileContext();
   const { state: myListState } = useProfileSportContext();
-  const [sourceData, setSourceData] = useState([]);
+  const [sourceData, setSourceData] = useState(Array<SportModel>);
 
   useEffect(() => {
     const loadSports = async () => {
@@ -103,7 +103,7 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
         >
           <div className="flex flex-col gap-4 justify-center items-center pt-10 z-0">
             {sourceData.length > 0 &&
-              sourceData.map((item, index) => (
+              sourceData.map((item) => (
                 <div
                   key={`${item.id}`}
                   className="relative flex flex-col sm:flex-row w-full gap-4 justify-center items-center m-auto inset-0 p-4 z-0"
