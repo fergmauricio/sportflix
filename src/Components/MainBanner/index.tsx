@@ -175,18 +175,31 @@ export function MainBanner() {
 
           <div
             className={`relative z-30 opacity-0 transition-opacity duration-2000 ease-in-out box-border m-0 
-      px-[50px]  lg:pt-100  w-auto h-full  text-white flex flex-col justify-center gap-4 
-      sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] ${
-        isTransitioning ? "opacity-100" : "opacity-0"
-      }`}
+      px-[50px]   w-auto h-full  text-white flex flex-col justify-center gap-4 
+       ${isTransitioning ? "opacity-100" : "opacity-0"}`}
           >
-            <h1 className="text-4xl font-bold sm:text-6xl [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
+            <Image
+              id={`currentSport?.id_logo`}
+              src={`/uploads/${currentSport?.id}.png`}
+              alt={currentSport?.title}
+              width={500}
+              height={300}
+              className="object-cover select-none opacity-90"
+            />
+            <h1 className="hidden text-4xl font-bold sm:text-6xl [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
               {currentSport?.title}
             </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl pl-1 [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]">
-              {currentSport?.content}
-            </p>
-            <div className="flex gap-3 pt-6 z-40">
+
+            {currentSport?.content.split("\n\n").map((paragraph, index) => (
+              <p
+                key={index}
+                className="text-xl sm:text-2xl md:text-2xl lg:text-3xl sm:pl-12 leading-[1] sm:leading-[.9] lg:leading-[.8] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.7)]"
+              >
+                {paragraph}
+              </p>
+            ))}
+
+            <div className="flex gap-3 pt-6 sm:pl-12 z-40">
               <button
                 onClick={handleGoTo}
                 className={clsx(

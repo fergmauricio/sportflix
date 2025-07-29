@@ -149,7 +149,15 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
             className="cursor-pointer hover:transform hover:scale-120"
             href="/portal"
           >
-            SPORTSFLIX
+            <Image
+              id="logo"
+              src={`/uploads/logo.png`}
+              alt="Sportflix"
+              width={157}
+              height={40}
+              className="mr-2 sm:mr-0 transition hover:transform hover:scale-[1.2]"
+              onClick={handleProfiles}
+            />
           </Link>
         </div>
 

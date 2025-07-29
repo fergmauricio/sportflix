@@ -42,6 +42,7 @@ export function SportContextProvider({ children }: SportContextProviderProps) {
       const sportRepository: SportRepository = new JsonSportRepository();
       const sports = await sportRepository.findAllPublic();
 
+      //const sp = sports.filter((item) => item.id === "sport_squash01");
       dispatch({ type: SportActionsTypes.INITIAL_SPORTS, payload: sports });
     } catch (error) {
       console.log(error);
