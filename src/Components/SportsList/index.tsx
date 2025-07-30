@@ -49,10 +49,6 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
   }, []);
 
   useEffect(() => {
-    console.log(sourceData);
-  }, [sourceData]);
-
-  useEffect(() => {
     if (!profileState?.activeProfile) return;
 
     if (!!myListState[profileState.activeProfile?.id]) {
