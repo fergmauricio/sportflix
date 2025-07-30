@@ -125,7 +125,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
                       <PlayIcon size={36} />
                     </div>
                     <Image
-                      src={`/uploads/${item.image}`}
+                      src={`/${item.image}`}
                       alt={item.title}
                       width={400}
                       height={250}

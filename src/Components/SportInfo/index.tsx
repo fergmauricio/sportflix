@@ -120,7 +120,7 @@ export function SportInfo() {
           <div className="absolute left-5 bottom-[-30px] z-30">
             <Image
               id={`id_logo`}
-              src={`/uploads/${sportState.activeSport.id}.png`}
+              src={`/${sportState.activeSport.id}.png`}
               alt={sportState.activeSport.title}
               width={450}
               height={250}
@@ -138,10 +138,7 @@ export function SportInfo() {
             disablePictureInPicture
             disableRemotePlayback
           >
-            <source
-              src={`/uploads/${sportState.activeSport.video}`}
-              type="video/mp4"
-            />
+            <source src={`/${sportState.activeSport.video}`} type="video/mp4" />
           </video>
         </div>
         <div className="relative p-12 flex flex-col gap-4 whitespace-pre-line">

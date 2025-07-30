@@ -139,7 +139,7 @@ export function MainBanner() {
           >
             <Image
               id={currentSport?.id}
-              src={`/uploads/${currentSport?.image}`}
+              src={`/${currentSport?.image}`}
               alt={currentSport?.title}
               fill
               sizes="100vw"
@@ -163,10 +163,7 @@ export function MainBanner() {
                   loop
                   playsInline
                 >
-                  <source
-                    src={`/uploads/${currentSport?.video}`}
-                    type="video/mp4"
-                  />
+                  <source src={`/${currentSport?.video}`} type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50 pointer-events-none" />
               </div>
@@ -180,7 +177,7 @@ export function MainBanner() {
           >
             <Image
               id={`currentSport?.id_logo`}
-              src={`/uploads/${currentSport?.id}.png`}
+              src={`/${currentSport?.id}.png`}
               alt={currentSport?.title}
               width={500}
               height={300}

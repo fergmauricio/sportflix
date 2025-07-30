@@ -62,7 +62,7 @@ export function SportVideo({ sport }: SportVideoProps) {
           disablePictureInPicture
           disableRemotePlayback
         >
-          <source src={`/uploads/${sport.video}`} type="video/mp4" />
+          <source src={`/${sport.video}`} type="video/mp4" />
         </video>
       </div>
     </MainContainer>

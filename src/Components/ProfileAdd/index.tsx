@@ -126,7 +126,7 @@ export function ProfileAdd({
                   >
                     <div className="relative aspect-square w-full">
                       <Image
-                        src={`/uploads/${profile.image}`}
+                        src={`/${profile.image}`}
                         alt={`${profile.name}`}
                         fill
                         className="object-cover rounded-lg"

@@ -151,7 +151,7 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
           >
             <Image
               id="logo"
-              src={`/uploads/logo.png`}
+              src={`/logo.png`}
               alt="Sportflix"
               width={157}
               height={40}
@@ -210,7 +210,7 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
             <>
               <Image
                 id={state.activeProfile.id}
-                src={`/uploads/${state.activeProfile.image}`}
+                src={`/${state.activeProfile.image}`}
                 alt={state.activeProfile.name || ""}
                 width={30}
                 height={30}

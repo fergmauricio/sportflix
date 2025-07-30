@@ -176,7 +176,7 @@ export function Carrousel({ title, type }: CarrouselProps) {
                     </div>
                   </div>
                   <Image
-                    src={`/uploads/${item.image}`}
+                    src={`/${item.image}`}
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 250px, 400px"
