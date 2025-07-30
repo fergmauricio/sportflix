@@ -51,7 +51,7 @@ export function ProfileChoose() {
       >
         <Image
           id="logo"
-          src={`/uploads/logo.png`}
+          src={`/logo.png`}
           alt="Sportflix"
           width={157}
           height={40}
@@ -135,7 +135,7 @@ export function ProfileChoose() {
                     )}
 
                     <Image
-                      src={`/uploads/${profile.image}`}
+                      src={`/${profile.image}`}
                       alt={`${profile.name}`}
                       fill
                       className="object-cover self-start mt-24 "
