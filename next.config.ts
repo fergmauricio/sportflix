@@ -1,22 +1,16 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
   images: {
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "sportflix-three.vercel.app",
+      },
+
       {
         protocol: "http",
         hostname: "localhost",
         port: "3000",
         pathname: "/**",
-        search: "",
-      },
-      {
-        protocol: "https",
-        hostname: "localhost",
-        port: "3000",
-        pathname: "/**",
-        search: "",
       },
     ],
   },
