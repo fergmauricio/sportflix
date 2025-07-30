@@ -1,13 +1,11 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "sportfix-git-main-mauricio-ferge-projects.vercel.app", // Domínio da Vercel
-      "sportfix.vercel.app", // Substituir pelo domínio principal
-    ],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "sportflix-three.vercel.app",
+        hostname: "**.vercel.app",
+        pathname: "/**",
       },
 
       {
@@ -20,4 +18,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
