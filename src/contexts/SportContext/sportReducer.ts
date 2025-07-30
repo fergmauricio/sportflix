@@ -21,6 +21,7 @@ export function sportReducer(
     }
     case SportActionsTypes.INITIAL_SPORTS: {
       const sports = action.payload;
+
       return {
         ...state,
         sports,

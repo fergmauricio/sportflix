@@ -60,7 +60,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
     const parts = text.split(new RegExp(`(${stringSearch})`, "gi"));
     return parts.map((part, i) =>
       part.toLowerCase() === stringSearch.toLowerCase() ? (
-        <span key={i} className="text-green-400 italic">
+        <span key={i} className="text-teal-400 italic">
           {part}
         </span>
       ) : (
@@ -86,8 +86,8 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
         <Container className="flex justify-center items-center ">
           <h1 className="font-bold text-4xl text-slate-200">
             Busca por{" "}
-            <span className="text-green-400 italic">{stringSearch}</span>
-            <span className="text-green-400 italic text-xl ml-4">
+            <span className="text-teal-400 italic">{stringSearch}</span>
+            <span className="text-teal-400 italic text-xl ml-4">
               ({sourceData.length} encontrados)
             </span>
           </h1>

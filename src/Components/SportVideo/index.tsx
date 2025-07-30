@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { SpinLoader } from "../SpinLoader";
 import { CircleArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { MainContainer } from "../MainContainer";
 
 type SportVideoProps = {
   sport: SportModel;
@@ -29,7 +30,7 @@ export function SportVideo({ sport }: SportVideoProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 text-white">
+    <MainContainer>
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex justify-center items-center ${
           isLoading ? "opacity-100" : "opacity-0"
@@ -64,6 +65,6 @@ export function SportVideo({ sport }: SportVideoProps) {
           <source src={`/uploads/${sport.video}`} type="video/mp4" />
         </video>
       </div>
-    </div>
+    </MainContainer>
   );
 }

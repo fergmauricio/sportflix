@@ -16,6 +16,7 @@ import { Footer } from "../Footer";
 import { useSportContext } from "@/contexts/SportContext";
 import SportsSearch from "../SportsSearch";
 import { Anchor } from "../Anchor";
+import { MainContainer } from "../MainContainer";
 
 type SportsListsProps = {
   type: "mylist" | "sportslist";
@@ -48,6 +49,10 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
   }, []);
 
   useEffect(() => {
+    console.log(sourceData);
+  }, [sourceData]);
+
+  useEffect(() => {
     if (!profileState?.activeProfile) return;
 
     if (!!myListState[profileState.activeProfile?.id]) {
@@ -64,7 +69,7 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 pt-40 text-white">
+    <MainContainer className="pt-40">
       <div
         className={`transition-opacity duration-500 ${
           !isLoading ? "opacity-100" : "opacity-0"
@@ -154,6 +159,6 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
         </Container>
         <Anchor />
       </div>
-    </div>
+    </MainContainer>
   );
 }

@@ -49,7 +49,14 @@ export function ProfileChoose() {
           "-translate-y-1/2"
         )}
       >
-        SPORTSFLIX
+        <Image
+          id="logo"
+          src={`/uploads/logo.png`}
+          alt="Sportflix"
+          width={157}
+          height={40}
+          className="mt-8 transition hover:transform hover:scale-[1.2]"
+        />
       </div>
       <div
         className={clsx(
@@ -72,7 +79,7 @@ export function ProfileChoose() {
               <ArrowLeftIcon size={42} className="mt-3 cursor-pointer" />
             </button>
           )}
-          <h1 className="text-white font-bold text-4xl md:text-5xl">
+          <h1 className="text-white font-bold text-3xl md:text-5xl">
             {state.savedProfiles.length > 0 &&
               !isFormMode &&
               "Escolha seu perfil"}
@@ -158,7 +165,7 @@ export function ProfileChoose() {
                   "flex",
                   state.savedProfiles.length === 0 && "w-[450px] inset-0",
                   "justify-center items-center gap-2 cursor-pointer transition",
-                  "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
+                  "bg-slate-700/70 hover:bg-slate-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
                   "text-white text-xl font-medium py-4 px-4 rounded-lg"
                 )}
               >
@@ -175,7 +182,7 @@ export function ProfileChoose() {
                   className={clsx(
                     "flex",
                     "justify-center items-center gap-2 cursor-pointer transition",
-                    "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
+                    "bg-slate-700/70 hover:bg-slate-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
                     "text-white text-xl font-medium py-4 px-4 rounded-lg"
                   )}
                 >
@@ -189,7 +196,7 @@ export function ProfileChoose() {
                   className={clsx(
                     "flex",
                     "justify-center items-center gap-2 cursor-pointer transition",
-                    "bg-blue-900/70 hover:bg-blue-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
+                    "bg-slate-700/70 hover:bg-slate-700/50 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
                     "text-white text-xl font-medium py-4 px-8 rounded-lg"
                   )}
                 >

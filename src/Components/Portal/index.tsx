@@ -11,6 +11,7 @@ import AnimateOnScroll from "../AnimateOnScroll";
 import clsx from "clsx";
 import SportsSearch from "../SportsSearch";
 import { Anchor } from "../Anchor";
+import { MainContainer } from "../MainContainer";
 
 export function Portal() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ export function Portal() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 text-white">
+    <MainContainer>
       <div
         className={`transition-opacity duration-500 ${
           !isLoading ? "opacity-100" : "opacity-0"
@@ -59,7 +60,7 @@ export function Portal() {
               <MainBanner />
             </section>
 
-            <AnimateOnScroll delay={2000} duration={700}>
+            <AnimateOnScroll delay={1000} duration={700}>
               <Container>
                 <Carrousel
                   title="Sugestões que você vai adorar"
@@ -68,13 +69,13 @@ export function Portal() {
               </Container>
             </AnimateOnScroll>
 
-            <AnimateOnScroll delay={2400} duration={700}>
+            <AnimateOnScroll delay={1400} duration={700}>
               <Container>
                 <Carrousel title="Mais bem avaliados" type="rating" />
               </Container>
             </AnimateOnScroll>
 
-            <AnimateOnScroll delay={2900} duration={700}>
+            <AnimateOnScroll delay={1900} duration={700}>
               <Container>
                 <Carrousel title="Minha Lista" type="customList" />
               </Container>
@@ -90,6 +91,6 @@ export function Portal() {
         </Container>
         <Anchor />
       </div>
-    </div>
+    </MainContainer>
   );
 }

@@ -144,10 +144,10 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
         )}
       />
       <div className="w-full flex items-center">
-        <div className="text-2xl font-medium text-green-400 pl-8 sm:ml-4 z-50">
+        <div className="text-2xl font-medium text-teal-300 pl-8 sm:ml-4 z-50">
           <Link
             className="cursor-pointer hover:transform hover:scale-120"
-            href="/portal"
+            href="/portal/"
           >
             <Image
               id="logo"
@@ -156,7 +156,6 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
               width={157}
               height={40}
               className="mr-2 sm:mr-0 transition hover:transform hover:scale-[1.2]"
-              onClick={handleProfiles}
             />
           </Link>
         </div>
@@ -175,7 +174,7 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
               placeholder="Buscar..."
               ref={searchInputRef}
               onChange={handleSearchInput}
-              className="w-[300px] h-[34px] border-1 border-green-400 rounded pl-8 text-[.9rem]"
+              className="w-[300px] h-[34px] border-1 border-teal-300 rounded pl-8 text-[.9rem]"
             />
             <div className="absolute left-2 ">
               <SearchIcon size={18} />

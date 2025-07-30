@@ -18,6 +18,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatedReviewButton } from "../AnimatedReviewButton";
+import Image from "next/image";
 
 export function SportInfo() {
   const router = useRouter();
@@ -114,6 +115,17 @@ export function SportInfo() {
         <div className="w-full h-140 relative mask-gradient-bottom">
           <div className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 transition absolute top-10 right-10 z-10 cursor-pointer flex justify-center items-center">
             <X className=" text-white " onClick={handleCloseDialog} />
+          </div>
+
+          <div className="absolute left-5 bottom-[-30px] z-30">
+            <Image
+              id={`id_logo`}
+              src={`/uploads/${sportState.activeSport.id}.png`}
+              alt={sportState.activeSport.title}
+              width={450}
+              height={250}
+              className="object-cover select-none"
+            />
           </div>
 
           <video

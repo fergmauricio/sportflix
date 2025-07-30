@@ -5,6 +5,7 @@ import { Menu } from "@/Components/Menu";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import SportsSearch from "../SportsSearch";
+import { MainContainer } from "../MainContainer";
 
 export default function About() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 pt-40 text-white">
+    <MainContainer className="pt-40">
       <div
         className={`transition-opacity duration-500 ${
           !isLoading ? "opacity-100" : "opacity-0"
@@ -54,15 +55,13 @@ export default function About() {
           <Container>
             <div className="space-y-10 mt-8">
               <section>
-                <h2 className="text-2xl font-bold mb-4 text-green-500">
+                <h2 className="text-2xl font-bold mb-4 text-teal-500">
                   O Conceito
                 </h2>
-                <div className="bg-slate-900/50 rounded-lg p-6">
+                <div className="bg-slate-800/50 rounded-lg p-6">
                   <p className="mb-4">
                     Este portal de esportes no estilo{" "}
-                    <span className="font-semibold text-green-400">
-                      Netflix
-                    </span>{" "}
+                    <span className="font-semibold text-teal-400">Netflix</span>{" "}
                     é uma simulação de uma plataforma de streaming voltada para
                     conteúdos esportivos. A ideia foi explorar:
                   </p>
@@ -91,12 +90,12 @@ export default function About() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold mb-4 text-green-500">
+                <h2 className="text-2xl font-bold mb-4 text-teal-500">
                   Tecnologias Utilizadas
                 </h2>
-                <div className="bg-slate-900/50 rounded-lg p-6">
+                <div className="bg-slate-800/50 rounded-lg p-6">
                   <div className="flex flex-wrap gap-3 mb-4">
-                    <span className="px-3 py-1 bg-red-900 text-green-100 rounded-full text-sm font-medium">
+                    <span className="px-3 py-1 bg-red-900 text-teal-100 rounded-full text-sm font-medium">
                       Next.js
                     </span>
                     <span className="px-3 py-1 bg-blue-900 text-blue-100 rounded-full text-sm font-medium">
@@ -118,30 +117,30 @@ export default function About() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold mb-4 text-green-500">
+                <h2 className="text-2xl font-bold mb-4 text-teal-500">
                   Objetivo
                 </h2>
-                <div className="bg-slate-900/50 rounded-lg p-6">
+                <div className="bg-slate-800/50 rounded-lg p-6">
                   <p className="mb-4">
                     Este projeto faz parte do meu portfólio pessoal e reflete a
                     capacidade de:
                   </p>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✔</span>
+                      <span className="text-teal-500 mr-2">✔</span>
                       <span>
                         Criar interfaces complexas com componentes reutilizáveis
                       </span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✔</span>
+                      <span className="text-teal-500 mr-2">✔</span>
                       <span>
                         Trabalhar com ferramentas modernas do ecossistema
                         React/Next
                       </span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✔</span>
+                      <span className="text-teal-500 mr-2">✔</span>
                       <span>
                         Garantir boas práticas de código e performance
                       </span>
@@ -153,7 +152,7 @@ export default function About() {
               <footer className="text-center mt-12 pt-8 border-t border-slate-700">
                 <p className="mb-6">
                   Quer ver outros projetos ou conversar sobre desenvolvimento?{" "}
-                  <span className="font-semibold text-green-400">
+                  <span className="font-semibold text-teal-400">
                     <a href="mailto:mauricioferg@gmail.com">Vamos conectar!</a>
                   </span>
                 </p>
@@ -166,6 +165,6 @@ export default function About() {
           </Container>
         </Container>
       </div>
-    </div>
+    </MainContainer>
   );
 }

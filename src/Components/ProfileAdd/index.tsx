@@ -20,6 +20,7 @@ export function ProfileAdd({
   const { state, fetchProfiles, addProfile, editProfile, deleteProfile } =
     useProfileContext();
 
+  const [msgError, setMsgError] = useState<string>("");
   const [formData, setFormData] = useState({
     id: editingProfile?.id || "",
     name: editingProfile?.name || "",
@@ -44,7 +45,12 @@ export function ProfileAdd({
   function handleSaveSettings(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!formData.name || !formData.image) return;
+    if (!formData.name || !formData.image) {
+      setMsgError("Preencha todos os campos");
+      return;
+    } else {
+      setMsgError("");
+    }
 
     if (editingProfile?.id) {
       editProfile(formData);
@@ -107,14 +113,14 @@ export function ProfileAdd({
                     }
                     className={clsx(
                       "flex justify-center items-center transition-all duration-300",
-                      "hover:bg-blue-900/70 hover:rounded-2xl p-2",
+                      "hover:bg-teal-500/70 hover:rounded-2xl p-2",
                       "hover:transform hover:scale-110 hover:z-20",
                       "hover:shadow-[0_20px_30px_rgba(0,0,0,0.5)] cursor-pointer",
                       "w-full max-w-[150px]",
                       {
-                        "bg-blue-800 rounded-2xl transform scale-110 z-20 shadow-[0_20px_30px_rgba(0,0,0,0.5)]":
+                        "bg-teal-500 rounded-2xl transform scale-110 z-20 shadow-[0_20px_30px_rgba(0,0,0,0.5)]":
                           selectedProfileId === profile.id ||
-                          editingProfile?.image === profile.image,
+                          formData.image === profile.image,
                       }
                     )}
                   >
@@ -134,6 +140,14 @@ export function ProfileAdd({
             </div>
 
             <div className="flex flex-col justify-center items-center mt-12 p-4 gap-4">
+              <div
+                className={clsx(
+                  "transition-opacity ease-in-out text-red-400",
+                  msgError !== "" ? "opacity-100" : "opacity-0"
+                )}
+              >
+                {msgError}
+              </div>
               <button
                 aria-label="Salvar configurações"
                 title="Salvar configurações"
@@ -141,8 +155,8 @@ export function ProfileAdd({
                   "flex",
                   "w-full",
                   "justify-center items-center gap-2 cursor-pointer transition",
-                  "bg-blue-500/30 hover:bg-slate-700/70 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
-                  "text-white text-2xl font-medium py-4 px-8 rounded-lg"
+                  "bg-teal-500/50 hover:bg-slate-700/70 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
+                  "text-white text-xl sm:text-2xl font-medium py-4 px-8 rounded-lg"
                 )}
               >
                 <CheckIcon size={30} /> Salvar Perfil
@@ -156,7 +170,7 @@ export function ProfileAdd({
                   "w-full",
                   "justify-center items-center gap-2 cursor-pointer transition",
                   "bg-slate-700/30 hover:bg-slate-700/70 hover:shadow-[0_5px_10px_rgba(0,0,0,0.3)] ",
-                  "text-white text-2xl font-medium py-4 px-8 rounded-lg"
+                  "text-white text-xl sm:text-2xl font-medium py-4 px-8 rounded-lg"
                 )}
               >
                 <TrashIcon size={30} /> Excluir perfil

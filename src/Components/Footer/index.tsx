@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer>
       <div className="relative w-full h-20 flex flex-col pt-60 justify-center items-center gap-12 text-slate-400">
-        <div className="flex gap-6 text-green-400">
+        <div className="flex gap-6 text-teal-300">
           <a
             className="cursor-pointer hover:scale-130 transition"
             target="_blank"

@@ -1,3 +1,4 @@
+import { MainContainer } from "@/Components/MainContainer";
 import { ProfileChoose } from "@/Components/ProfileChoose";
 import { ListProfileSportContextProvider } from "@/contexts/ListProfileSportContext";
 import { ProfileContextProvider } from "@/contexts/ProfileContext";
@@ -9,9 +10,9 @@ export default function Home() {
       <ProfileContextProvider>
         <ListProfileSportContextProvider>
           <SportContextProvider>
-            <div className="min-h-screen bg-gradient-to-b from-slate-900 to-blue-950 text-white">
+            <MainContainer>
               <ProfileChoose />
-            </div>
+            </MainContainer>
           </SportContextProvider>
         </ListProfileSportContextProvider>
       </ProfileContextProvider>

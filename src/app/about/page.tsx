@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "SPORTFLIX | About",
+    title: "SPORTFLIX | Sobre o portal",
     description: "",
   };
 }

@@ -45,7 +45,7 @@ export function Anchor() {
             "flex justify-center items-center",
             "w-14 h-14",
             "hover:transform hover:scale-120 transition",
-            "bg-green-400/70 rounded-full shadow-[0_5px_10px_rgba(0,0,0,0.2)]"
+            "bg-teal-300/70 rounded-full shadow-[0_5px_10px_rgba(0,0,0,0.2)]"
           )}
         >
           <ArrowUp />

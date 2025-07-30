@@ -85,13 +85,13 @@ export function Carrousel({ title, type }: CarrouselProps) {
     if (isFloatingNumber) {
       const integerNumber = parseInt(ratingStr.split(".")[0]);
       for (let i = 1; i < integerNumber; i++) {
-        stars.push(<FaStar key={i} className="text-green-400" />);
+        stars.push(<FaStar key={i} className="text-shadow-cyan-300" />);
       }
-      stars.push(<FaStarHalfAlt key={4} className="text-green-400" />);
-      stars.push(<FaRegStar key={5} className="text-green-400" />);
+      stars.push(<FaStarHalfAlt key={4} className="text-shadow-cyan-300" />);
+      stars.push(<FaRegStar key={5} className="text-shadow-cyan-300" />);
     } else {
       for (let i = 1; i <= rating; i++) {
-        stars.push(<FaStar key={i} className="text-green-400" />);
+        stars.push(<FaStar key={i} className="text-shadow-cyan-300" />);
       }
     }
 
@@ -111,13 +111,16 @@ export function Carrousel({ title, type }: CarrouselProps) {
     >
       <h2 className="text-2xl sm:text-4xl font-medium text-slate-200 mb-6 pl-4 md:pl-12 flex gap-2 items-center">
         {type === "rating" && (
-          <FaStar className="text-green-400 mt-1 mr-1" size={20} />
+          <FaStar className="text-shadow-cyan-300 mt-1 mr-1" size={20} />
         )}
         {type === "customList" && (
-          <BsList className="text-green-400 mt-1 mr-1" size={20} />
+          <BsList className="text-shadow-cyan-300 mt-1 mr-1" size={20} />
         )}
         {type === "standard" && (
-          <BsEmojiSunglasses className="text-green-400 mt-1 mr-1" size={20} />
+          <BsEmojiSunglasses
+            className="text-shadow-cyan-300 mt-1 mr-1"
+            size={20}
+          />
         )}
 
         {title}
