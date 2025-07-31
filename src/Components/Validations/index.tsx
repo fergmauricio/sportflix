@@ -1,34 +1,38 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export function Validations() {
   const router = useRouter();
 
-  function handleValidation() {
-    const profileData = localStorage.getItem("activeProfile");
+  useEffect(() => {
+    function handleValidation() {
+      if (typeof window === "undefined") return false;
 
-    if (!profileData?.trim()) {
-      return false;
-    }
+      const profileData = localStorage.getItem("activeProfile");
 
-    try {
-      const parsedData = JSON.parse(profileData);
-      if (Object.keys(parsedData).length === 0) {
+      if (!profileData?.trim()) {
         return false;
       }
-    } catch (error) {
-      console.log(error);
-      return false;
+
+      try {
+        const parsedData = JSON.parse(profileData);
+        if (Object.keys(parsedData).length === 0) {
+          return false;
+        }
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+
+      return true;
     }
 
-    return true;
-  }
+    if (!handleValidation()) {
+      router.push("/");
+    }
+  }, [router]);
 
-  if (!handleValidation) {
-    //window.location.href = "/";
-    router.push(`/`);
-  }
-
-  return <></>;
+  return null;
 }
