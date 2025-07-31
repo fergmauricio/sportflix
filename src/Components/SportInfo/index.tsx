@@ -45,7 +45,11 @@ export function SportInfo() {
   }, [profileState.activeProfile, sportState.activeSport, customLists]);
 
   const getCurrentReviewType = () => {
-    if (!profileState.activeProfile?.id || !sportState.activeSport?.id)
+    if (
+      !profileState.activeProfile?.id ||
+      !sportState.activeSport?.id ||
+      Object.keys(SportReviewState).length === 0
+    )
       return null;
 
     const review = SportReviewState[profileState.activeProfile?.id].find(
