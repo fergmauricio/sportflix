@@ -116,8 +116,6 @@ export function ListProfileSportContextProvider({
       }
     } else {
       setItemStorage({ [id]: [sport] });
-
-      return;
     }
 
     dispatch({

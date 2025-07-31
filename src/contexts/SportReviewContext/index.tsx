@@ -112,8 +112,6 @@ export function SportReviewContextProvider({
       }
     } else {
       setItemStorage({ [profileId]: [{ sportId, type }] });
-
-      return;
     }
 
     dispatch({
