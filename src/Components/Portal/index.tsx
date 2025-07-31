@@ -60,7 +60,7 @@ export function Portal() {
               <MainBanner />
             </section>
 
-            <AnimateOnScroll delay={1000} duration={700}>
+            <AnimateOnScroll delay={500} duration={700}>
               <Container>
                 <Carrousel
                   title="Sugestões que você vai adorar"
@@ -69,13 +69,13 @@ export function Portal() {
               </Container>
             </AnimateOnScroll>
 
-            <AnimateOnScroll delay={1400} duration={700}>
+            <AnimateOnScroll delay={800} duration={700}>
               <Container>
                 <Carrousel title="Mais bem avaliados" type="rating" />
               </Container>
             </AnimateOnScroll>
 
-            <AnimateOnScroll delay={1900} duration={700}>
+            <AnimateOnScroll delay={1000} duration={700}>
               <Container>
                 <Carrousel title="Minha Lista" type="customList" />
               </Container>
