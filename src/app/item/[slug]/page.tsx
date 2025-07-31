@@ -1,5 +1,6 @@
 import { SpinLoader } from "@/Components/SpinLoader";
 import { SportVideo } from "@/Components/SportVideo";
+import { Validations } from "@/Components/Validations";
 import { JsonSportRepository } from "@/repositories/json-sport-repository";
 
 import { Metadata } from "next";
@@ -21,7 +22,7 @@ export async function generateMetadata({
   const sport = await jsonRepository.findBySlug(slug);
 
   return {
-    title: sport.title,
+    title: `Sportflix - ${sport.title}`,
     description: sport.content,
   };
 }
@@ -33,8 +34,11 @@ export default async function ItemSlugPage({ params }: PostSlugPageProps) {
   const sport = await jsonRepository.findBySlug(slug);
 
   return (
-    <Suspense fallback={<SpinLoader className="min-h-20 mb-16" />}>
-      <SportVideo sport={sport} />
-    </Suspense>
+    <>
+      <Validations />
+      <Suspense fallback={<SpinLoader className="min-h-20 mb-16" />}>
+        <SportVideo sport={sport} />
+      </Suspense>
+    </>
   );
 }

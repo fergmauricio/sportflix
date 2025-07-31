@@ -1,21 +1,25 @@
 import { MainContainer } from "@/Components/MainContainer";
 import { ProfileChoose } from "@/Components/ProfileChoose";
-import { ListProfileSportContextProvider } from "@/contexts/ListProfileSportContext";
-import { ProfileContextProvider } from "@/contexts/ProfileContext";
-import { SportContextProvider } from "@/contexts/SportContext";
+import Providers from "@/Components/Providers";
+
+import { Metadata } from "next";
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "Bem vindo ao Sportflix",
+    description:
+      "Acompanhe seus esportes favoritos, crie listas personalizadas e descubra análises exclusivas. Tudo em um único lugar!",
+  };
+}
 
 export default function Home() {
   return (
     <>
-      <ProfileContextProvider>
-        <ListProfileSportContextProvider>
-          <SportContextProvider>
-            <MainContainer>
-              <ProfileChoose />
-            </MainContainer>
-          </SportContextProvider>
-        </ListProfileSportContextProvider>
-      </ProfileContextProvider>
+      <Providers>
+        <MainContainer>
+          <ProfileChoose />
+        </MainContainer>
+      </Providers>
     </>
   );
 }

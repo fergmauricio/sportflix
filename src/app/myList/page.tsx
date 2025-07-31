@@ -1,27 +1,23 @@
 import SportsList from "@/Components/SportsList";
-import { ListProfileSportContextProvider } from "@/contexts/ListProfileSportContext";
-import { ProfileContextProvider } from "@/contexts/ProfileContext";
-import { SportContextProvider } from "@/contexts/SportContext";
 
+import Providers from "@/Components/Providers";
+import { Validations } from "@/Components/Validations";
 import { Metadata } from "next";
-
-export const dynamic = "force-static";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "SPORTFLIX | Minha Lista Customizada",
-    description: "",
+    title: "Sportflix - Minha lista",
+    description: "Listamos os esportes que você marcou como favoritos",
   };
 }
 
 export default function MyListPage() {
   return (
-    <ProfileContextProvider>
-      <ListProfileSportContextProvider>
-        <SportContextProvider>
-          <SportsList type="mylist" />
-        </SportContextProvider>
-      </ListProfileSportContextProvider>
-    </ProfileContextProvider>
+    <>
+      <Validations />
+      <Providers>
+        <SportsList type="mylist" />
+      </Providers>
+    </>
   );
 }

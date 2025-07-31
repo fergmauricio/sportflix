@@ -1,29 +1,23 @@
 import LegalTerm from "@/Components/LegalTerm";
-import { ListProfileSportContextProvider } from "@/contexts/ListProfileSportContext";
-import { ProfileContextProvider } from "@/contexts/ProfileContext";
-import { SportContextProvider } from "@/contexts/SportContext";
+import Providers from "@/Components/Providers";
+import { Validations } from "@/Components/Validations";
 
 import { Metadata } from "next";
 
-export const dynamic = "force-static";
-
 export function generateMetadata(): Metadata {
   return {
-    title: "SPORTFLIX | Termos Legais",
-    description: "",
+    title: "Sportflix - Termos Legais",
+    description: "Entenda melhor os termos legais do Sportflix",
   };
 }
 
 export default function LegalTermPage() {
   return (
     <>
-      <ProfileContextProvider>
-        <ListProfileSportContextProvider>
-          <SportContextProvider>
-            <LegalTerm />
-          </SportContextProvider>
-        </ListProfileSportContextProvider>
-      </ProfileContextProvider>
+      <Validations />
+      <Providers>
+        <LegalTerm />
+      </Providers>
     </>
   );
 }
