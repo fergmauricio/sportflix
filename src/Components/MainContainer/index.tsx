@@ -9,7 +9,7 @@ export function MainContainer({ children, className }: MainContainerProps) {
   return (
     <div
       className={clsx(
-        "min-h-screen bg-gradient-to-b from-slate-950 to-slate-800 text-white",
+        "min-h-screen bg-gradient-to-b from-slate-950 to-slate-800 text-white overflow-y-auto",
         className
       )}
     >

@@ -86,7 +86,7 @@ export function ProfileAdd({
 
   return (
     <div
-      className={clsx("w-[300px] sm:w-[400px] md:w-[500px] min-h-[600px] p-4")}
+      className={clsx("w-[350px] sm:w-[400px] md:w-[500px] min-h-[600px] p-4")}
     >
       <form onSubmit={handleSaveSettings} action="" className="form">
         {state.initialProfiles.length > 0 && (

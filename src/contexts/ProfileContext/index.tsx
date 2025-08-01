@@ -133,9 +133,7 @@ export function ProfileContextProvider({
         JSON.parse(profileData)
       ) as SavedProfileModel[];
 
-      console.log("parsed ", profileParsed);
       const editedProfile = profileParsed.filter((p) => p.id !== profile.id);
-      console.log("edited ", editedProfile);
 
       localStorage.setItem("savedProfile", "");
       localStorage.setItem("savedProfile", JSON.stringify(editedProfile));

@@ -121,7 +121,7 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
   ];
 
   return (
-    <header className="fixed top-0 w-full flex bg-transparent z-10 h-22 items-center">
+    <header className="fixed top-0 w-full flex bg-transparent z-50 h-22 items-center">
       <div
         className={clsx(
           "absolute inset-0 transition-opacity delay-150 duration-150 ease-in-out ",
