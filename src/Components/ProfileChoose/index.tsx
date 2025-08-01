@@ -97,7 +97,7 @@ export function ProfileChoose() {
         )}
         {!isAddingProfile && state.savedProfiles.length > 0 && (
           <div className="relative w-full flex justify-center items-center pt-4">
-            <div className="flex flex-wrap justify-center gap-4 p-4">
+            <div className="flex flex-wrap justify-center item-center p-4 w-full sm:w-[60%]">
               {state.savedProfiles.map((profile, index) => (
                 <div
                   key={profile.id}
@@ -107,7 +107,7 @@ export function ProfileChoose() {
                     !isFormMode && "hover:rounded-2xl p-2 hover:p-1",
                     !isFormMode && "hover:transform hover:scale-105 hover:z-20",
                     !isFormMode && "cursor-pointer",
-                    "w-[calc(50%-16px)] sm:w-[calc(33.333%-16px)] md:w-[calc(25%-16px)] lg:w-[calc(20%-16px)]"
+                    "w-[calc(50%-16px)] sm:w-[calc(33.333%-16px)] md:w-[calc(25%-16px)] lg:w-[calc(20%-16px)] xl:w-[calc(16.666%-16px)]"
                   )}
                 >
                   <div className="relative aspect-square w-full flex flex-col items-center">
