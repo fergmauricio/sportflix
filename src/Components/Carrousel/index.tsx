@@ -23,6 +23,8 @@ export function Carrousel({ title, type }: CarrouselProps) {
   const { state: profileState } = useProfileContext();
   const { state: myListState } = useProfileSportContext();
 
+  const [cardWidth, setCardWidth] = useState(250); // Largura base para mobile
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(5);
   const [sourceData, setSourceData] = useState<SportModel[]>([]);
@@ -51,7 +53,17 @@ export function Carrousel({ title, type }: CarrouselProps) {
 
   useEffect(() => {
     const handleResize = () => {
-      setVisibleCards(window.innerWidth < 768 ? 3 : visibleCards);
+      const width = window.innerWidth;
+      if (width < 768) {
+        setVisibleCards(2);
+        setCardWidth(250); // Largura mobile
+      } else if (width < 1024) {
+        setVisibleCards(3);
+        setCardWidth(300); // Largura tablet
+      } else {
+        setVisibleCards(5);
+        setCardWidth(400); // Largura desktop
+      }
     };
 
     handleResize();
@@ -60,15 +72,16 @@ export function Carrousel({ title, type }: CarrouselProps) {
   }, []);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev >= sourceData.length - visibleCards ? 0 : prev + 1
-    );
+    setCurrentIndex((prev) => {
+      const maxIndex = sourceData.length - visibleCards;
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev <= 0 ? sourceData.length - visibleCards : prev - 1
-    );
+    setCurrentIndex((prev) => {
+      return prev <= 0 ? sourceData.length - visibleCards : prev - 1;
+    });
   };
 
   function handleClickCard(item: SportModel) {
@@ -139,11 +152,19 @@ export function Carrousel({ title, type }: CarrouselProps) {
           <div
             className={clsx("flex transition-transform duration-300 gap-2 z-9")}
             style={{
-              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
+              transform: `translateX(-${currentIndex * cardWidth}px)`,
+              transition: "transform 500ms cubic-bezier(0.4, 0, 0.2, 1)",
+              width: `${sourceData.length * cardWidth}px`,
             }}
           >
             {sourceData.map((item, index) => (
-              <div key={`${index}_${item.id}`} className="flex flex-col">
+              <div
+                key={`${index}_${item.id}`}
+                className="flex flex-col flex-shrink-0"
+                style={{
+                  width: `${cardWidth}px`,
+                }}
+              >
                 <div
                   onClick={() => handleClickCard(item)}
                   className={clsx(

@@ -4,6 +4,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 300;
+    src: url("/fonts/Roboto-Light.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/Roboto-Medium.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+  }
+
+  html,
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
 @layer utilities {
   .transition-opacity {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

@@ -84,7 +84,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
         }`}
       >
         <Container className="flex justify-center items-center ">
-          <h1 className="font-bold text-4xl text-slate-200">
+          <h1 className="font-bold text-2xl sm:text-4xl text-slate-200">
             Busca por{" "}
             <span className="text-teal-400 italic">{stringSearch}</span>
             <span className="text-teal-400 italic text-xl ml-4">
@@ -93,7 +93,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
           </h1>
         </Container>
         <Container>
-          <div className="flex flex-col gap-4 justify-center items-center pt-10">
+          <div className="flex flex-col gap-4 justify-center items-center pt-10 z-0">
             {sourceData.length === 0 && (
               <span className="italic">Nenhum resultado encontrado.</span>
             )}
@@ -110,7 +110,7 @@ export default function SportsSearch({ stringSearch }: SportsSearchProps) {
                     }}
                     className={clsx(
                       "relative flex justify-center items-center rounded transition group ",
-                      "w-[400px] h-[240px] cursor-pointer z-10",
+                      "w-full sm:w-[400px] h-[240px] cursor-pointer z-10",
                       "hover:transform hover:scale-[1.2] hover:z-30 hover:shadow-[0_5px_10px_rgba(0,0,0,0.5)] hover:delay-300 cursor-pointer"
                     )}
                   >

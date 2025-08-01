@@ -77,7 +77,10 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
   );
 
   const liClassName = (): string => {
-    return clsx("no-underline text-white mx-4", isMobile && "py-3 px-4 ");
+    return clsx(
+      "no-underline text-white mx-2 sm:mx-4 text text-xs sm:text-[.9rem]",
+      isMobile && "py-3 px-4 "
+    );
   };
 
   function handleToggleMenu() {
@@ -144,7 +147,12 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
         )}
       />
       <div className="w-full flex items-center">
-        <div className="text-2xl font-medium text-teal-300 pl-8 sm:ml-4 z-50">
+        <div
+          className={clsx(
+            "text-2xl font-medium text-teal-300 pl-8 sm:ml-4 z-50",
+            isSearching && isMobile ? "opacity-0" : "opacity-100"
+          )}
+        >
           <Link
             className="cursor-pointer hover:transform hover:scale-120"
             href="/portal/"
@@ -153,8 +161,8 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
               id="logo"
               src={`/logo.png`}
               alt="Sportflix"
-              width={157}
-              height={40}
+              width={`${isMobile ? 127 : 127}`}
+              height={`${isMobile ? 13 : 13}`}
               className="mr-2 sm:mr-0 transition hover:transform hover:scale-[1.2]"
             />
           </Link>
@@ -174,7 +182,7 @@ export function Menu({ cbSearchState, cbSearchString }: MenuProps) {
               placeholder="Buscar..."
               ref={searchInputRef}
               onChange={handleSearchInput}
-              className="w-[300px] h-[34px] border-1 border-teal-300 rounded pl-8 text-[.9rem]"
+              className="w-[150px] sm:w-[200px]  lg:w-[300px] h-[34px] border-1 border-teal-300 rounded pl-8 text-[.9rem]"
             />
             <div className="absolute left-2 ">
               <SearchIcon size={18} />

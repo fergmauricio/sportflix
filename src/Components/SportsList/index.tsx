@@ -91,7 +91,7 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
             !isSearching ? "opacity-100" : "opacity-0"
           )}
         >
-          <h1 className="font-bold text-4xl text-slate-200">
+          <h1 className="font-bold text-2xl sm:text-4xl text-slate-200">
             {type === "mylist" && "Minha Lista Customizada"}
             {type === "sportslist" && "Catálogo de Esportes"}
           </h1>
@@ -107,7 +107,7 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
               sourceData.map((item) => (
                 <div
                   key={`${item.id}`}
-                  className="relative flex flex-col sm:flex-row w-full gap-4 justify-center items-center m-auto inset-0 p-4 z-0"
+                  className="relative flex flex-col sm:flex-row w-full gap-4 justify-center items-center m-auto inset-0 p-4 z-10"
                 >
                   <div
                     onClick={(e) => {
@@ -116,7 +116,7 @@ export default function SportsList({ type = "mylist" }: SportsListsProps) {
                     }}
                     className={clsx(
                       "relative flex justify-center items-center rounded transition group ",
-                      "w-[400px] h-[240px] cursor-pointer z-10",
+                      "w-full sm:w-[400px] h-[240px] cursor-pointer z-10",
                       "hover:transform hover:scale-[1.2] hover:z-30 hover:shadow-[0_5px_10px_rgba(0,0,0,0.5)] hover:delay-300 cursor-pointer"
                     )}
                   >
