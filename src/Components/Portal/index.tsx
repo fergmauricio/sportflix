@@ -53,7 +53,7 @@ export function Portal() {
           <main className="flex flex-col box-content overflow-hidden">
             <section
               className="
-                  w-full h-[70vh] sm:h-[80vh] md:h-[75vh]
+                  w-full h-[85vh] min-h-[800px] sm:min-h-auto md:h-[75vh]
                   flex items-center relative
                   mask-gradient-bottom"
             >
