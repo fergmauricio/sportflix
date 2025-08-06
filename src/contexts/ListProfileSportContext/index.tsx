@@ -16,7 +16,6 @@ const initialState: ProfileSportStateModel = {};
 type ProfileSportContextProps = {
   state: ProfileSportStateModel;
   dispatch: React.Dispatch<ProfileSportActionModel>;
-  fetchSportsByProfile: (id: string) => void;
   addProfileSport: (id: string, sport: SportModel) => void;
   removeProfileSport: (id: string, sport: string) => void;
 };
@@ -80,10 +79,6 @@ export function ListProfileSportContextProvider({
     });
   };
 
-  const fetchSportsByProfile = (id: string) => {
-    return state[id] || [];
-  };
-
   const setItemStorage = (json: object) => {
     localStorage.setItem("myCustomListProfile", JSON.stringify(json));
   };
@@ -132,7 +127,7 @@ export function ListProfileSportContextProvider({
       value={{
         state,
         dispatch,
-        fetchSportsByProfile,
+
         addProfileSport,
         removeProfileSport,
       }}
