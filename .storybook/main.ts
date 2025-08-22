@@ -1,28 +1,15 @@
-import type { StorybookConfig } from "@storybook/nextjs-vite";
+import type { StorybookConfig } from "@storybook/nextjs";
 
 const config: StorybookConfig = {
   stories: [
-    "../app/**/*.stories.@(js|jsx|ts|tsx|mdx)", // Componentes no App Router
-    "../components/**/*.stories.@(js|jsx|ts|tsx)", // Componentes compartilhados
-    "../src/**/*.stories.@(js|jsx|ts|tsx)", // Fallback para estrutura antiga
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/**/stories.@(js|jsx|ts|tsx)",
   ],
-  addons: [
-    "@storybook/addon-essentials", // Inclui docs, controls e actions
-    "@storybook/addon-interactions", // Para testes interativos
-    "@storybook/addon-a11y", // Acessibilidade
-    "@storybook/addon-vitest", // Testes
-  ],
-  framework: {
-    name: "@storybook/nextjs-vite",
-    options: {},
-  },
-  staticDirs: ["../public"], // Diretório de assets estáticos
-  docs: {
-    autodocs: "tag", // Gera docs automáticos para componentes marcados
-  },
-  typescript: {
-    reactDocgen: "react-docgen-typescript",
+  addons: ["@storybook/addon-docs"],
+  framework: "@storybook/nextjs",
+  staticDirs: ["../public"],
+  features: {
+    backgroundsStoryGlobals: false,
   },
 };
-
 export default config;

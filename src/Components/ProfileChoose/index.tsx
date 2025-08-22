@@ -43,21 +43,13 @@ export function ProfileChoose() {
     <>
       <div
         className={clsx(
-          //"w-[70vw] h-full sm:w-[60vw] fixed top-1/2",
-          //"left-1/2",
           "relative pt-6 pb-8 sm:pt-0 sm:pb-0 sm:h-screen",
           "flex flex-col justify-center items-center gap-6"
-          //"transform ",
-          //"-translate-x-1/2 ",
-          //"-translate-y-1/2"
         )}
       >
         <div
           className={clsx(
             "text-2xl font-medium text-green-400"
-            //"fixed top-1/2 left-1/2 top-10 transform ",
-            //"-translate-x-1/2 ",
-            //"-translate-y-1/2"
           )}
         >
           <Image
