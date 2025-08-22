@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { DefaultInput } from "../DefaultInput";
-import { CheckIcon, TrashIcon } from "lucide-react";
+import { ArrowLeft, CheckIcon, TrashIcon } from "lucide-react";
 
 type ProfileAddProps = {
   callback: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,7 +43,7 @@ export function ProfileAdd({
   }, [editingProfile]);
 
   function handleSaveSettings(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+    e.stopPropagation();
 
     if (!formData.name || !formData.image) {
       setMsgError("Preencha todos os campos");
@@ -82,12 +82,39 @@ export function ProfileAdd({
     }
   }
 
+  function handleGoBack(e: React.MouseEvent<HTMLButtonElement>) {
+    e.stopPropagation();
+    callback(false);
+    callback2(false);
+
+    return;
+  }
+
   if (!state.initialProfiles) return <></>;
 
   return (
     <div
       className={clsx("w-[350px] sm:w-[400px] md:w-[500px] min-h-[600px] p-4")}
     >
+      <h1
+        className={clsx(
+          "text-white font-bold text-xl sm:text-2xl md:text-4xl text-center",
+          "flex justify-center items-center gap-4"
+        )}
+      >
+        <button
+          className={clsx(
+            "hover:transform hover:scale-120 transition cursor-pointer"
+          )}
+          title="Voltar"
+          aria-label="Voltar"
+          onClick={handleGoBack}
+        >
+          <ArrowLeft size={28} />
+        </button>
+        {formData.id !== "" && "Gerenciar Perfil"}
+        {formData.id === "" && "Crie um novo perfil"}
+      </h1>
       <form onSubmit={handleSaveSettings} action="" className="form">
         {state.initialProfiles.length > 0 && (
           <>
