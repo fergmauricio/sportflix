@@ -43,7 +43,7 @@ export function ProfileAdd({
   }, [editingProfile]);
 
   function handleSaveSettings(e: React.FormEvent<HTMLFormElement>) {
-    e.stopPropagation();
+    e.preventDefault();
 
     if (!formData.name || !formData.image) {
       setMsgError("Preencha todos os campos");
