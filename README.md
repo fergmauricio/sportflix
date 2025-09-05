@@ -2,7 +2,7 @@
 
 **Um Netflix de esportes** - Demonstração de habilidades front-end
 
-![Preview](https://via.placeholder.com/1200x600?text=SportFlix+Preview) _(adicione screenshots reais)_
+https://sportflix-three.vercel.app/
 
 ## ✨ Sobre o Projeto
 
@@ -61,5 +61,5 @@ npm run dev
 
 📫 **Contato**: mauricioferg@gmail.com
 🔗 **Links**:
-[LinkedIn](https://www.linkedin.com/in/maur%C3%ADcio-ferg-117aa090)
+[LinkedIn](https://www.linkedin.com/in/ferg-mauricio)
 ```
